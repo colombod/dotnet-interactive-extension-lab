@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <PackageVersion>0.0.1</PackageVersion>
+    <IsPackable>true</IsPackable>
+    <PackageProjectUrl>https://github.com/colombod/dotnet-interactive-extentsion-lab</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/colombod/dotnet-interactive-extentsion-lab</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Description>Adds formatting support for .NET Interactive notebooks</Description>
+    <Copyright>2021</Copyright>
+    <Version>0.0.1</Version>
+    <Authors>Diego Colombo</Authors>
+    <PackageTags>Image NetCore interactive</PackageTags>
+    <PackageId>Interactive.Extension.System.Drawing</PackageId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.21255.3" />
+    <PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.21255.3" />
+    <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="$(OutputPath)/Dotnet.Interactive.Extension.System.Drawing.dll" Pack="true" PackagePath="interactive-extensions/dotnet" />
+  </ItemGroup>
+
+</Project>
