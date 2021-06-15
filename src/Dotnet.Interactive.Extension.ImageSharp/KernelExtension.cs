@@ -34,9 +34,7 @@ namespace Dotnet.Interactive.Extension.ImageSharp
         private static PocketView CreateImgTag(Image image, string id, int height, int width)
         {
             var format = image.Frames.Count > 1 ? (IImageFormat)GifFormat.Instance : PngFormat.Instance;
-            var data = image.ToBase64String(format);
-            var imageSource = $"data:{format.DefaultMimeType};base64, {data}";
-
+            var imageSource = image.ToBase64String(format);
             PocketView imgTag = img[id: id, src: imageSource, height: height, width: width]();
             return imgTag;
         }
