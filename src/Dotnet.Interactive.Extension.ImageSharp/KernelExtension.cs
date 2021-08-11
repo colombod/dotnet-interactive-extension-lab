@@ -6,12 +6,10 @@ using Microsoft.DotNet.Interactive.Commands;
 using Microsoft.DotNet.Interactive.Formatting;
 
 using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.Drawing.Processing;
 using SixLabors.ImageSharp.Formats;
 using SixLabors.ImageSharp.Formats.Gif;
 using SixLabors.ImageSharp.Formats.Png;
 using SixLabors.ImageSharp.PixelFormats;
-using SixLabors.ImageSharp.Processing;
 
 using static Microsoft.DotNet.Interactive.Formatting.PocketViewTags;
 
@@ -51,23 +49,13 @@ namespace Dotnet.Interactive.Extension.ImageSharp
 
             {
                 var img = new Image<Rgba32>(36, 24, color);
-                img.Mutate(c =>
-                {
-                    c.DrawPolygon(Color.Black, 2.0f, new[]
-                    {
-                        new PointF(0f, 0f),
-                        new PointF(img.Width, 0f),
-                        new PointF(img.Width, img.Height),
-                        new PointF(0f, img.Height),
-                    });
-                });
 
                 var id = Guid.NewGuid().ToString("N");
                 var imgTag = CreateImgTag(img, id, img.Height, img.Width);
-
+                img.Dispose();
                 PocketView colorSwatch = div(table(tr(
-                    td(imgTag),
-                    td(color.ToString())))
+                    td[style: "vertical-align:middle"](div[ style: $"height: {img.Height}px; width: {img.Width}px; border-style:solid; border-width:thin; border-color:rgb(126,126,126)"](imgTag)),
+                    td[style: "vertical-align:middle"](color.ToString())))
                 );
                 writer.Write(colorSwatch.ToDisplayString());
 
