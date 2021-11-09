@@ -17,12 +17,13 @@ namespace Dotnet.Interactive.Extension.System.Drawing
         {
             Formatter.Register<Image>((image, writer) =>
             {
-                var id = Guid.NewGuid().ToString("N");
-                using var stream = new MemoryStream();
-                image.Save(stream, ImageFormat.Png);
-                stream.Flush();
-                var data = stream.ToArray();
-                var imgTag = CreateImgTag(data, id, image.Height, image.Width);
+                var imgTag = CreatePocketView(image);
+                writer.Write(imgTag);
+            }, HtmlFormatter.MimeType);
+
+            Formatter.Register<Bitmap>((image, writer) =>
+            {
+                var imgTag = CreatePocketView(image);
                 writer.Write(imgTag);
             }, HtmlFormatter.MimeType);
 
@@ -30,6 +31,17 @@ namespace Dotnet.Interactive.Extension.System.Drawing
                 new DisplayValue(new FormattedValue(
                     "text/markdown",
                     $"Added support for System.Drawing to kernel {kernel.Name}.")));
+        }
+
+        private static PocketView CreatePocketView(Image image)
+        {
+            var id = Guid.NewGuid().ToString("N");
+            using var stream = new MemoryStream();
+            image.Save(stream, ImageFormat.Png);
+            stream.Flush();
+            var data = stream.ToArray();
+            var imgTag = CreateImgTag(data, id, image.Height, image.Width);
+            return imgTag;
         }
 
         private static PocketView CreateImgTag(byte[] data, string id, int height, int width)
