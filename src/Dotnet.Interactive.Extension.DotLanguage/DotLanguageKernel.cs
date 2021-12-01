@@ -8,10 +8,12 @@ using Microsoft.DotNet.Interactive.Http;
 
 namespace Dotnet.Interactive.Extension.DotLanguage;
 
-public class DotLanguageKernel : Kernel,
+internal class DotLanguageKernel : Kernel,
     IKernelCommandHandler<SubmitCode>
 {
     private readonly string _cacheBuster;
+
+    private ChooseDotLanguageKernelDirective _chooseKernelDirective;
 
     public DotLanguageKernel() : base("dot")
     {
@@ -20,13 +22,23 @@ public class DotLanguageKernel : Kernel,
 
     public Task HandleAsync(SubmitCode command, KernelInvocationContext context)
     {
-        var code = GenerateHtml(command.Code, new Uri("https://visjs.github.io/vis-network/standalone/umd/vis-network.min.js", UriKind.Absolute), null, _cacheBuster);
+        var width = "100%";
+        var height = "600px";
+        if (ChooseKernelDirective is ChooseDotLanguageKernelDirective chooser)
+        {
+            width = command.KernelChooserParseResult.ValueForOption(chooser.WidthOption);
+            height = command.KernelChooserParseResult.ValueForOption(chooser.HeightOption);
+        }
+
+        var code = GenerateHtml(command.Code, new Uri("https://visjs.github.io/vis-network/standalone/umd/vis-network.min.js", UriKind.Absolute), null, _cacheBuster, width, height);
         context.Display(code);
         return Task.CompletedTask;
 
     }
 
-    private IHtmlContent GenerateHtml(string commandCode, Uri libraryUri, string libraryVersion, string cacheBuster)
+    public override ChooseKernelDirective ChooseKernelDirective => _chooseKernelDirective ??= new(this);
+
+    private IHtmlContent GenerateHtml(string commandCode, Uri libraryUri, string libraryVersion, string cacheBuster, string width, string height)
     {
         var requireUri = new Uri("https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
         var divId = Guid.NewGuid().ToString("N");
@@ -39,7 +51,7 @@ public class DotLanguageKernel : Kernel,
         code.AppendLine(JavascriptUtilities.GetCodeForEnsureRequireJs(requireUri, functionName));
         code.AppendLine("</script>");
 
-        code.AppendLine($"<div id=\"{divId}\" style=\"height:600px;\"></div>");
+        code.AppendLine($"<div id=\"{divId}\" style=\"height:{height}; width:{width}\"></div>");
         code.AppendLine("</div>");
 
         var html = new HtmlString(code.ToString());

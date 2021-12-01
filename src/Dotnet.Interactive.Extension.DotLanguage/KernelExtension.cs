@@ -12,7 +12,7 @@ namespace Dotnet.Interactive.Extension.DotLanguage
             {
                 cs.Add(new DotLanguageKernel());
                 KernelInvocationContext.Current?.Display(
-                    new HtmlString(@"<details><summary>Draw networks using dto language.</summary>
+                    new HtmlString(@"<details><summary>Draw networks using dot language.</summary>
         <p>This extension adds support for dot language. Try this code:</p>
 <pre>
     <code>
