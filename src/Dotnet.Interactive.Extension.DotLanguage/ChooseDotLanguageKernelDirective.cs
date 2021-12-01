@@ -12,13 +12,13 @@ internal class ChooseDotLanguageKernelDirective : ChooseKernelDirective
     }
 
     public Option<string> WidthOption { get; } = new(
-        "--width",
-        description: "Specify width for the output.",
+        "--display-width",
+        description: "Specify width for the display.",
         getDefaultValue: () => "100%");
 
     public Option<string> HeightOption { get; } = new(
-        "--height",
-        description: "Specify height for the output.",
+        "--display-height",
+        description: "Specify height for the display.",
         getDefaultValue: () => "600px");
 
 }
