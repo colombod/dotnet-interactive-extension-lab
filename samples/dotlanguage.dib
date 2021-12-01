@@ -1,0 +1,21 @@
+#!csharp
+
+#r "nuget: Interactive.Extension.DotLanguage, *-*"
+
+#!csharp
+
+#!dot
+graph ethane {
+    C_0 -- H_0 [type=s];
+    C_0 -- H_1 [type=s];
+    C_0 -- H_2 [type=s];
+    C_0 -- C_1 [type=s];
+    C_1 -- H_3 [type=s];
+    C_1 -- H_4 [type=s];
+    C_1 -- H_5 [type=s];
+}
+
+#!csharp
+
+#!dot
+dinetwork {node[shape=circle]; 1 -> 1 -> 2; 2 -> 3; 2 -- 4; 2 -> 1 [style=dotted, width=3] }
