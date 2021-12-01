@@ -1,8 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<PackageVersion>0.0.1</PackageVersion>
+		<LangVersion>latest</LangVersion>
 		<IsPackable>true</IsPackable>
 		<PackageProjectUrl>https://github.com/colombod/dotnet-interactive-extentsion-lab</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/colombod/dotnet-interactive-extentsion-lab</RepositoryUrl>
@@ -17,8 +18,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.21559.2" />
-		<PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.21559.2" />
+		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.21580.4" />
+		<PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.21580.4" />
 		<PackageReference Include="OpenCvSharp4" Version="4.5.3.20210817" />
 	</ItemGroup>
 
