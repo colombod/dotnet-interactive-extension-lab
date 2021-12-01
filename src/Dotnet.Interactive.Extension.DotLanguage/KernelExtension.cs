@@ -55,14 +55,14 @@ dinetwork {node[shape=circle]; 1 -> 1 -> 2; 2 -> 3; 2 -- 4; 2 -> 1 [style=dotted
             var divId = Guid.NewGuid().ToString("N");
             var code = new StringBuilder();
             var functionName = $"loadVisjs_{divId}";
-            code.AppendLine("<div style=\"height:600px;\">");
+            code.AppendLine("<div >");
 
             code.AppendLine(@"<script type=""text/javascript"">");
             AppendJsCode(code, divId, functionName, libraryUri, libraryVersion, cacheBuster,commandCode);
             code.AppendLine(JavascriptUtilities.GetCodeForEnsureRequireJs(requireUri, functionName));
             code.AppendLine("</script>");
 
-            code.AppendLine($"<div id=\"{divId}\"></div>");
+            code.AppendLine($"<div id=\"{divId}\" style=\"height:600px;\"></div>");
             code.AppendLine("</div>");
 
             var html = new HtmlString(code.ToString());
