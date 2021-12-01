@@ -4,7 +4,7 @@
 
 #!csharp
 
-#!dot --height=200px
+#!dot
 graph ethane {
     C_0 -- H_0 [type=s];
     C_0 -- H_1 [type=s];
