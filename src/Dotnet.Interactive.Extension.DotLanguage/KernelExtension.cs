@@ -20,6 +20,13 @@ namespace Dotnet.Interactive.Extension.DotLanguage
 dinetwork {node[shape=circle]; 1 -> 1 -> 2; 2 -> 3; 2 -- 4; 2 -> 1 [style=dotted, width=3] }
     </code>
 </pre>
+<p>Display size can be changed. Try this code:</p>
+<pre>
+    <code>
+#!dot --display-height 300px
+dinetwork {node[shape=circle]; 1 -> 1 -> 2; 2 -> 3; 2 -- 4; 2 -> 1 [style=dotted, width=3] }
+    </code>
+</pre>
         </details>"),
                     "text/html");
             }
