@@ -1,13 +1,10 @@
 version: "1.0.{build}"
+
 image: Visual Studio 2022
+
 # Test against the latest version of this Node.js version
 environment:
   nodejs_version: "16.13.0"
-
-# Install scripts. (runs after repo cloning)
-install:
-  # Get the latest stable version of Node.js or io.js
-  - ps: Install-Product node $env:nodejs_version
 
 dotnet_csproj:
   patch: true
@@ -17,8 +14,10 @@ dotnet_csproj:
   assembly_version: "{version}"
   file_version: "{version}"
   informational_version: "{version}"
+
 pull_requests:
   do_not_increment_build_number: true
+
 branches:
   only:
     - main
@@ -27,6 +26,7 @@ init:
   - cmd: git config --global core.autocrlf true
 install:
   # Install repo specific stuff here
+    - ps: Install-Product node $env:nodejs_version
 before_build:
   - cmd: dotnet --version
   - cmd: dotnet restore dotnetInteractiveExtensions.sln --verbosity q
