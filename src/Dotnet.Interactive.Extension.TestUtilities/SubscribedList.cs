@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Immutable;
 
-namespace Dotnet.Interactive.Extension.Mermaid.Tests;
+namespace Dotnet.Interactive.Extension.TestUtilities;
 
 public class SubscribedList<T> : IReadOnlyList<T>, IDisposable
 {
