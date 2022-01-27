@@ -9,7 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dotnet.Interactive.Extensio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dotnet.Interactive.Extension.System.Drawing", "src\Dotnet.Interactive.Extension.System.Drawing\Dotnet.Interactive.Extension.System.Drawing.csproj", "{518B1079-C4F7-4904-8AAD-CF4E9C570341}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotnet.Interactive.Extension.DotLanguage", "src\Dotnet.Interactive.Extension.DotLanguage\Dotnet.Interactive.Extension.DotLanguage.csproj", "{FE8A1386-B785-4A72-944A-09B6BEBD6021}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dotnet.Interactive.Extension.DotLanguage", "src\Dotnet.Interactive.Extension.DotLanguage\Dotnet.Interactive.Extension.DotLanguage.csproj", "{FE8A1386-B785-4A72-944A-09B6BEBD6021}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dotnet.Interactive.Extension.Mermaid", "src\Dotnet.Interactive.Extension.Mermaid\Dotnet.Interactive.Extension.Mermaid.csproj", "{22BD460D-104F-4CDD-9807-68A13CDDBBC2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{20C4282E-81DE-47F2-838A-C820F746C04A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotnet.Interactive.Extension.Mermaid.Tests", "src\Dotnet.Interactive.Extension.Mermaid.Tests\Dotnet.Interactive.Extension.Mermaid.Tests.csproj", "{40B49BAB-ADEC-43F5-98BF-B644AD8E4AA3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +39,20 @@ Global
 		{FE8A1386-B785-4A72-944A-09B6BEBD6021}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE8A1386-B785-4A72-944A-09B6BEBD6021}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE8A1386-B785-4A72-944A-09B6BEBD6021}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22BD460D-104F-4CDD-9807-68A13CDDBBC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22BD460D-104F-4CDD-9807-68A13CDDBBC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22BD460D-104F-4CDD-9807-68A13CDDBBC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22BD460D-104F-4CDD-9807-68A13CDDBBC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40B49BAB-ADEC-43F5-98BF-B644AD8E4AA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40B49BAB-ADEC-43F5-98BF-B644AD8E4AA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40B49BAB-ADEC-43F5-98BF-B644AD8E4AA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40B49BAB-ADEC-43F5-98BF-B644AD8E4AA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{40B49BAB-ADEC-43F5-98BF-B644AD8E4AA3} = {20C4282E-81DE-47F2-838A-C820F746C04A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7726ACD0-497E-4FB1-83D4-92EE7A3D7A9E}

@@ -8,17 +8,19 @@
 		<RepositoryUrl>https://github.com/colombod/dotnet-interactive-extentsion-lab</RepositoryUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Description>Adds formatting support for .NET Interactive notebooks</Description>
-		<Copyright>2021</Copyright>
+		<Copyright>2021, 2022</Copyright>
 		<Version>0.0.1</Version>
 		<Authors>Diego Colombo</Authors>
 		<PackageTags>Image NetCore interactive</PackageTags>
 		<PackageId>Interactive.Extension.ImageSharp</PackageId>
 		<IncludeBuildOutput>true</IncludeBuildOutput>
+		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.21580.4" />
-		<PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.21580.4" />
+		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.21606.1" />
+		<PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.21606.1" />
 		<PackageReference Include="SixLabors.ImageSharp" Version="1.0.4" />
 	</ItemGroup>
 
