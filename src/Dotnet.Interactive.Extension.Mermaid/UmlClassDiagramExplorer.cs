@@ -1,0 +1,26 @@
+﻿using System;
+
+namespace Dotnet.Interactive.Extension.Mermaid;
+
+public class UmlClassDiagramExplorer
+{
+    private readonly Type _type;
+    private ClassDiagramConfiguration _classDiagramConfiguration;
+
+    public UmlClassDiagramExplorer(Type type, ClassDiagramConfiguration classDiagramConfiguration)
+    {
+        _type = type;
+        _classDiagramConfiguration = classDiagramConfiguration;
+    }
+
+    public MermaidMarkdown ToMarkdown()
+    {
+        return _type.ToClassDiagram(_classDiagramConfiguration);
+    }
+
+    public UmlClassDiagramExplorer WithGraphDepth(int graphDepth)
+    {
+        _classDiagramConfiguration = _classDiagramConfiguration with { GraphDepth = graphDepth };
+        return this;
+    }
+}
