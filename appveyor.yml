@@ -30,12 +30,18 @@ install:
     - cmd: cd ./src/Dotnet.Interactive.Extension.SandDance.js/
     - npm ci 
     - cmd: cd ../.. 
+    - cmd: cd ./src/Dotnet.Interactive.Extension.nteract.js/
+    - npm ci 
+    - cmd: cd ../.. 
 before_build:
   - cmd: dotnet --version
   - cmd: dotnet restore dotnetInteractiveExtensions.sln --verbosity q
  
 build_script:
   - cmd: cd ./src/Dotnet.Interactive.Extension.SandDance.js/
+  - npm run compile 
+  - cmd: cd ../.. 
+  - cmd: cd ./src/Dotnet.Interactive.Extension.nteract.js/
   - npm run compile 
   - cmd: cd ../.. 
   - cmd: dotnet build dotnetInteractiveExtensions.sln -c Release
@@ -49,6 +55,9 @@ artifacts:
 clone_depth: 1
 test_script:
   - cmd: cd ./src/Dotnet.Interactive.Extension.SandDance.js/
+  - npm run compile 
+  - cmd: cd ../.. 
+  - cmd: cd ./Dotnet.Interactive.Extension.nteract.js/
   - npm run compile 
   - cmd: cd ../.. 
   - cmd: dotnet test dotnetInteractiveExtensions.sln
