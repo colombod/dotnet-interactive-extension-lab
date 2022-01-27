@@ -5,9 +5,9 @@ namespace Dotnet.Interactive.Extension.Mermaid;
 public class UmlClassDiagramExplorer
 {
     private readonly Type _type;
-    private ClassDiagramConfiguration _classDiagramConfiguration;
+    private ClassDiagramConfiguration? _classDiagramConfiguration;
 
-    public UmlClassDiagramExplorer(Type type, ClassDiagramConfiguration classDiagramConfiguration)
+    public UmlClassDiagramExplorer(Type type, ClassDiagramConfiguration? classDiagramConfiguration)
     {
         _type = type;
         _classDiagramConfiguration = classDiagramConfiguration;
@@ -20,7 +20,11 @@ public class UmlClassDiagramExplorer
 
     public UmlClassDiagramExplorer WithGraphDepth(int graphDepth)
     {
-        _classDiagramConfiguration = _classDiagramConfiguration with { GraphDepth = graphDepth };
+        if (_classDiagramConfiguration is null)
+        {
+            _classDiagramConfiguration = new ClassDiagramConfiguration();
+        }
+        _classDiagramConfiguration = _classDiagramConfiguration  with { GraphDepth = graphDepth };
         return this;
     }
 }

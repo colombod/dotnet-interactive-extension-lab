@@ -37,24 +37,14 @@ public static class AssertionExtensions
     public static void BeEquivalentToRespectingRuntimeTypes<TExpectation>(
         this ObjectAssertions assertions,
         TExpectation expectation,
-        Func<EquivalencyAssertionOptions<TExpectation>, EquivalencyAssertionOptions<TExpectation>> config = null)
+        Func<EquivalencyAssertionOptions<TExpectation>, EquivalencyAssertionOptions<TExpectation>>? config = null)
     {
-        assertions.BeEquivalentTo(expectation, o =>
-        {
-            if (config is { })
-            {
-                return config.Invoke(o).RespectingRuntimeTypes();
-            }
-            else
-            {
-                return o.RespectingRuntimeTypes();
-            }
-        });
+        assertions.BeEquivalentTo(expectation, o => config is { } ? config.Invoke(o).RespectingRuntimeTypes() : o.RespectingRuntimeTypes());
     }
 
     public static void BeJsonEquivalentTo<T>(this StringAssertions assertion, T expected)
     {
-        var obj = System.Text.Json.JsonSerializer.Deserialize(assertion.Subject, expected.GetType());
+        var obj = System.Text.Json.JsonSerializer.Deserialize(assertion.Subject, expected!.GetType());
         obj.Should().BeEquivalentToRespectingRuntimeTypes(expected);
     }
 
@@ -93,7 +83,7 @@ public static class AssertionExtensions
 
     public static AndWhichConstraint<ObjectAssertions, T> ContainSingle<T>(
         this GenericCollectionAssertions<KernelCommand> should,
-        Func<T, bool> where = null)
+        Func<T, bool>? where = null)
         where T : KernelCommand
     {
         T subject;
