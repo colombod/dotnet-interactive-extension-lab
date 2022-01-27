@@ -30,6 +30,7 @@ install:
 before_build:
   - cmd: dotnet --version
   - cmd: dotnet restore dotnetInteractiveExtensions.sln --verbosity q
+  - cmd: npm ci ./src/Dotnet.Interactive.Extension.SandDance.js/
 build_script:
   - cmd: dotnet build dotnetInteractiveExtensions.sln -c Release
 after_build:
