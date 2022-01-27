@@ -8,7 +8,7 @@ using Microsoft.DotNet.Interactive.Commands;
 using Microsoft.DotNet.Interactive.Events;
 using Microsoft.DotNet.Interactive.Server;
 
-namespace Dotnet.Interactive.Extension.Mermaid.Tests;
+namespace Dotnet.Interactive.Extension.TestUtilities;
 
 [DebuggerStepThrough]
 public static class AssertionExtensions

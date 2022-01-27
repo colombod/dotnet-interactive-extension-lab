@@ -3,12 +3,12 @@ using Microsoft.DotNet.Interactive;
 using Microsoft.DotNet.Interactive.Events;
 using Microsoft.DotNet.Interactive.Formatting.TabularData;
 
-namespace Dotnet.Interactive.Extension.Mermaid.Tests;
+namespace Dotnet.Interactive.Extension.TestUtilities;
 
-internal static class TestUtility
+public static class TestUtility
 {
-   
-    internal static TabularDataResource ShouldDisplayTabularDataResourceWhich(
+
+    public static TabularDataResource ShouldDisplayTabularDataResourceWhich(
         this SubscribedList<KernelEvent> events)
     {
         events.Should().NotContainErrors();

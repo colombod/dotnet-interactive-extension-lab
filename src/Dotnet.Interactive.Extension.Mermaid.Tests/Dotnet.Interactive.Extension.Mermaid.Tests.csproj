@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
@@ -25,6 +25,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Dotnet.Interactive.Extension.Mermaid\Dotnet.Interactive.Extension.Mermaid.csproj" />
+	  <ProjectReference Include="..\Dotnet.Interactive.Extension.TestUtilities\Dotnet.Interactive.Extension.TestUtilities.csproj" />
 	</ItemGroup>
 
 </Project>

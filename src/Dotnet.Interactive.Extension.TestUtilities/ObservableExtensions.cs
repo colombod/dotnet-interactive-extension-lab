@@ -1,4 +1,4 @@
-﻿namespace Dotnet.Interactive.Extension.Mermaid.Tests;
+﻿namespace Dotnet.Interactive.Extension.TestUtilities;
 
 public static class ObservableExtensions
 {

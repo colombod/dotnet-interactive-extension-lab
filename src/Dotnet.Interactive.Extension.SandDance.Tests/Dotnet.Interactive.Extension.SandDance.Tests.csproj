@@ -25,6 +25,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Dotnet.Interactive.Extension.SandDance\Dotnet.Interactive.Extension.SandDance.csproj" />
+	  <ProjectReference Include="..\Dotnet.Interactive.Extension.TestUtilities\Dotnet.Interactive.Extension.TestUtilities.csproj" />
 	</ItemGroup>
 
 </Project>

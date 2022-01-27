@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotnet.Interactive.Extensio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotnet.Interactive.Extension.SandDance.Tests", "src\Dotnet.Interactive.Extension.SandDance.Tests\Dotnet.Interactive.Extension.SandDance.Tests.csproj", "{818F36B4-764B-45C4-8188-908D48C08701}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotnet.Interactive.Extension.TestUtilities", "src\Dotnet.Interactive.Extension.TestUtilities\Dotnet.Interactive.Extension.TestUtilities.csproj", "{E8D06DD3-47C6-4D5F-AFB8-CF9AD2804D25}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{818F36B4-764B-45C4-8188-908D48C08701}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{818F36B4-764B-45C4-8188-908D48C08701}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{818F36B4-764B-45C4-8188-908D48C08701}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8D06DD3-47C6-4D5F-AFB8-CF9AD2804D25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8D06DD3-47C6-4D5F-AFB8-CF9AD2804D25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8D06DD3-47C6-4D5F-AFB8-CF9AD2804D25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8D06DD3-47C6-4D5F-AFB8-CF9AD2804D25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +72,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{40B49BAB-ADEC-43F5-98BF-B644AD8E4AA3} = {20C4282E-81DE-47F2-838A-C820F746C04A}
 		{818F36B4-764B-45C4-8188-908D48C08701} = {20C4282E-81DE-47F2-838A-C820F746C04A}
+		{E8D06DD3-47C6-4D5F-AFB8-CF9AD2804D25} = {20C4282E-81DE-47F2-838A-C820F746C04A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7726ACD0-497E-4FB1-83D4-92EE7A3D7A9E}
