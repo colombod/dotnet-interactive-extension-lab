@@ -35,6 +35,9 @@ before_build:
   - cmd: dotnet restore dotnetInteractiveExtensions.sln --verbosity q
  
 build_script:
+  - cmd: cd ./src/Dotnet.Interactive.Extension.SandDance.js/
+  - npm run compile 
+  - cmd: cd ../.. 
   - cmd: dotnet build dotnetInteractiveExtensions.sln -c Release
 after_build:
   # For once the build has completed
@@ -45,7 +48,10 @@ artifacts:
 
 clone_depth: 1
 test_script:
-    - cmd: dotnet test dotnetInteractiveExtensions.sln
+  - cmd: cd ./src/Dotnet.Interactive.Extension.SandDance.js/
+  - npm run compile 
+  - cmd: cd ../.. 
+  - cmd: dotnet test dotnetInteractiveExtensions.sln
 # deploy:
 #   - provider: NuGet
 #     api_key:

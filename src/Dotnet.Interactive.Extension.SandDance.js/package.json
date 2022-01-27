@@ -1,5 +1,5 @@
 {
-  "name": "microsoft.dotnet.interactive.sanddance",
+  "name": "dotnet.interactive.sanddance",
   "version": "1.0.0",
   "description": "api to create sanddance visualizations",
   "main": "lib/index.js",
@@ -19,14 +19,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dotnet/interactive.git"
+    "url": "git+https://github.com/colombod/dotnet-interactive-extentsion-lab.git"
   },
   "author": "Diego Colombo",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dotnet/interactive/issues"
+    "url": "https://github.com/colombod/dotnet-interactive-extentsion-lab/issues"
   },
-  "homepage": "https://github.com/dotnet/interactive",
+  "homepage": "https://github.com/colombod/dotnet-interactive-extentsion-lab",
   "dependencies": {
     "@deck.gl/core": "8.3.7",
     "@deck.gl/layers": "8.3.7",
