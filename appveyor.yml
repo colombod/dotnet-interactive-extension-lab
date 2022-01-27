@@ -46,12 +46,12 @@ artifacts:
 clone_depth: 1
 test_script:
     - cmd: dotnet test dotnetInteractiveExtensions.sln
-deploy:
-  - provider: NuGet
-    api_key:
-      secure: 5RuQxlBbD68iriTG5fcWuZ52Qe8v3CuEGTBHJjH/hnfO4CWYoZe8KlVEf1EpMNq4
+# deploy:
+#   - provider: NuGet
+#     api_key:
+#       secure: 5RuQxlBbD68iriTG5fcWuZ52Qe8v3CuEGTBHJjH/hnfO4CWYoZe8KlVEf1EpMNq4
 
-    skip_symbols: false
-    artifact: /.*(\.|\.s)nupkg/
-    on:
-      branch: main
+#     skip_symbols: false
+#     artifact: /.*(\.|\.s)nupkg/
+#     on:
+#       branch: main
