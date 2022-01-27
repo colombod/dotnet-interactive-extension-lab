@@ -13,7 +13,7 @@ namespace Dotnet.Interactive.Extension.Mermaid;
 
 public static class MermaidExtensions
 {
-    public static MermaidMarkdown ToClassDiagram(this Type type, ClassDiagramConfiguration configuration = null)
+    public static MermaidMarkdown ToClassDiagram(this Type type, ClassDiagramConfiguration? configuration = null)
     {
 
         var buffer = new StringBuilder();

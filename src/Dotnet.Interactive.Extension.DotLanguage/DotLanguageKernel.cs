@@ -36,9 +36,9 @@ internal class DotLanguageKernel : Kernel,
 
     }
 
-    public override ChooseKernelDirective ChooseKernelDirective => _chooseKernelDirective ??= new(this);
+    public override ChooseKernelDirective ChooseKernelDirective => _chooseKernelDirective ??= new ChooseDotLanguageKernelDirective(this);
 
-    private IHtmlContent GenerateHtml(string commandCode, Uri libraryUri, string libraryVersion, string cacheBuster, string width, string height)
+    private IHtmlContent GenerateHtml(string commandCode, Uri libraryUri, string? libraryVersion, string cacheBuster, string? width, string? height)
     {
         var requireUri = new Uri("https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
         var divId = Guid.NewGuid().ToString("N");
@@ -59,7 +59,7 @@ internal class DotLanguageKernel : Kernel,
     }
 
     private static void AppendJsCode(StringBuilder stringBuilder,
-        string divId, string functionName, Uri libraryUri, string libraryVersion, string cacheBuster, string code)
+        string divId, string functionName, Uri libraryUri, string? libraryVersion, string cacheBuster, string code)
     {
         libraryVersion ??= "1.0.0";
         stringBuilder.AppendLine($@"
