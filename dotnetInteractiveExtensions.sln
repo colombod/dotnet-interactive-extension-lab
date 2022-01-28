@@ -15,15 +15,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dotnet.Interactive.Extensio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{20C4282E-81DE-47F2-838A-C820F746C04A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotnet.Interactive.Extension.Mermaid.Tests", "src\Dotnet.Interactive.Extension.Mermaid.Tests\Dotnet.Interactive.Extension.Mermaid.Tests.csproj", "{40B49BAB-ADEC-43F5-98BF-B644AD8E4AA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dotnet.Interactive.Extension.Mermaid.Tests", "src\Dotnet.Interactive.Extension.Mermaid.Tests\Dotnet.Interactive.Extension.Mermaid.Tests.csproj", "{40B49BAB-ADEC-43F5-98BF-B644AD8E4AA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotnet.Interactive.Extension.SandDance", "src\Dotnet.Interactive.Extension.SandDance\Dotnet.Interactive.Extension.SandDance.csproj", "{866A4477-EE43-453E-8418-A143DF9818AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dotnet.Interactive.Extension.SandDance", "src\Dotnet.Interactive.Extension.SandDance\Dotnet.Interactive.Extension.SandDance.csproj", "{866A4477-EE43-453E-8418-A143DF9818AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotnet.Interactive.Extension.SandDance.Tests", "src\Dotnet.Interactive.Extension.SandDance.Tests\Dotnet.Interactive.Extension.SandDance.Tests.csproj", "{818F36B4-764B-45C4-8188-908D48C08701}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dotnet.Interactive.Extension.SandDance.Tests", "src\Dotnet.Interactive.Extension.SandDance.Tests\Dotnet.Interactive.Extension.SandDance.Tests.csproj", "{818F36B4-764B-45C4-8188-908D48C08701}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotnet.Interactive.Extension.TestUtilities", "src\Dotnet.Interactive.Extension.TestUtilities\Dotnet.Interactive.Extension.TestUtilities.csproj", "{E8D06DD3-47C6-4D5F-AFB8-CF9AD2804D25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dotnet.Interactive.Extension.TestUtilities", "src\Dotnet.Interactive.Extension.TestUtilities\Dotnet.Interactive.Extension.TestUtilities.csproj", "{E8D06DD3-47C6-4D5F-AFB8-CF9AD2804D25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotnet.Interactive.Extension.nteract", "src\Dotnet.Interactive.Extension.nteract\Dotnet.Interactive.Extension.nteract.csproj", "{68C2EC35-D961-49C4-9D49-9D71D9A2FAF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dotnet.Interactive.Extension.nteract", "src\Dotnet.Interactive.Extension.nteract\Dotnet.Interactive.Extension.nteract.csproj", "{68C2EC35-D961-49C4-9D49-9D71D9A2FAF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotnet.Interactive.Extension.nteract.Tests", "src\Dotnet.Interactive.Extension.nteract.Tests\Dotnet.Interactive.Extension.nteract.Tests.csproj", "{6CCF679D-E66F-4B0F-A686-DFE402AF7212}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,10 @@ Global
 		{68C2EC35-D961-49C4-9D49-9D71D9A2FAF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68C2EC35-D961-49C4-9D49-9D71D9A2FAF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68C2EC35-D961-49C4-9D49-9D71D9A2FAF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CCF679D-E66F-4B0F-A686-DFE402AF7212}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CCF679D-E66F-4B0F-A686-DFE402AF7212}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CCF679D-E66F-4B0F-A686-DFE402AF7212}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CCF679D-E66F-4B0F-A686-DFE402AF7212}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,6 +85,7 @@ Global
 		{40B49BAB-ADEC-43F5-98BF-B644AD8E4AA3} = {20C4282E-81DE-47F2-838A-C820F746C04A}
 		{818F36B4-764B-45C4-8188-908D48C08701} = {20C4282E-81DE-47F2-838A-C820F746C04A}
 		{E8D06DD3-47C6-4D5F-AFB8-CF9AD2804D25} = {20C4282E-81DE-47F2-838A-C820F746C04A}
+		{6CCF679D-E66F-4B0F-A686-DFE402AF7212} = {20C4282E-81DE-47F2-838A-C820F746C04A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7726ACD0-497E-4FB1-83D4-92EE7A3D7A9E}
