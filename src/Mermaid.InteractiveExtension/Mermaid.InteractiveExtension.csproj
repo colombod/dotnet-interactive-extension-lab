@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<PackageVersion>0.0.1</PackageVersion>
+		<IsPackable>true</IsPackable>
+		<PackageProjectUrl>https://github.com/colombod/dotnet-interactive-extension-lab</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/colombod/dotnet-interactive-extension-lab</RepositoryUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<Description>Adds formatting support for .NET Interactive notebooks</Description>
+		<Copyright>2021, 2022</Copyright>
+		<Version>0.0.1</Version>
+		<Authors>Diego Colombo</Authors>
+		<PackageTags>mermaid mermaid-js diagram graph  interactive interactive-extension</PackageTags>
+		<PackageId>nteract.InteractiveExtension</PackageId>
+		<IncludeBuildOutput>true</IncludeBuildOutput>
+		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="resources\mermaid.min.js" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="resources\mermaid.min.js">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.21606.1" />
+		<PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.21606.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="$(OutputPath)/Mermaid.InteractiveExtension.dll" Pack="true" PackagePath="interactive-extensions/dotnet" />
+	</ItemGroup>
+
+</Project>
