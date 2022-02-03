@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFramework>net6.0</TargetFramework>
+	  <PackageVersion>0.0.1</PackageVersion>
+	  <IsPackable>true</IsPackable>
+	  <PackageProjectUrl>https://github.com/colombod/dotnet-interactive-extension-lab</PackageProjectUrl>
+	  <RepositoryUrl>https://github.com/colombod/dotnet-interactive-extension-lab</RepositoryUrl>
+	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+	  <Description>Adds formatting support for .NET Interactive notebooks</Description>
+	  <Copyright>2021, 2022</Copyright>
+	  <Version>0.0.1</Version>
+	  <Authors>Diego Colombo</Authors>
+	  <PackageTags>sanddance viusalization data  interactive interactive-extension</PackageTags>
+	  <PackageId>SandDance.InteractiveExtension</PackageId>
+	  <IncludeBuildOutput>true</IncludeBuildOutput>
+	  <Nullable>enable</Nullable>
+	  <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+	<PropertyGroup>
+		<sanddanceJsApiRoot>$(MSBuildThisFileDirectory)/../SandDance.InteractiveExtension.js/</sanddanceJsApiRoot>
+	</PropertyGroup>
+
+	<ItemGroup>
+
+		<SandDanceTypescriptOutputFiles Include="$(sanddanceJsApiRoot)dist/sanddanceapi.js" />
+
+		<EmbeddedResource Include="@(SandDanceTypescriptOutputFiles)" LogicalName="$(AssemblyName).resources.%(FileName)%(Extension)" />
+	</ItemGroup>
+
+	<!-- sanddance resources -->
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.21606.1" />
+		<PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.21606.1" />
+		<PackageReference Include="Microsoft.ML.DataView" Version="1.7.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="$(OutputPath)/SandDance.InteractiveExtension.dll" Pack="true" PackagePath="interactive-extensions/dotnet" />
+	</ItemGroup>
+
+</Project>

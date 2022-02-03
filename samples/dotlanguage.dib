@@ -1,6 +1,6 @@
 #!csharp
 
-#r "nuget: Interactive.Extension.DotLanguage, *-*"
+#r "nuget: InteractiveExtension.DotLanguage, *-*"
 
 #!csharp
 
