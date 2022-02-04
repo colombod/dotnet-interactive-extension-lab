@@ -23,9 +23,9 @@ public class MermaidKernel : Kernel
         string? background = null;
         if (ChooseKernelDirective is ChooseMermaidKernelDirective chooser)
         {
-            width = command.KernelChooserParseResult.ValueForOption(chooser.WidthOption);
-            height = command.KernelChooserParseResult.ValueForOption(chooser.HeightOption);
-            background = command.KernelChooserParseResult.ValueForOption(chooser.BackgroundOption);
+            width = command.KernelChooserParseResult.GetValueForOption(chooser.WidthOption);
+            height = command.KernelChooserParseResult.GetValueForOption(chooser.HeightOption);
+            background = command.KernelChooserParseResult.GetValueForOption(chooser.BackgroundOption);
         }
 
         var markdown = new MermaidMarkdown(command.Code)
