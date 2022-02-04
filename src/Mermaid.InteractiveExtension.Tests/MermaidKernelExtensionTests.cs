@@ -141,6 +141,70 @@ public class MermaidKernelExtensionTests : IDisposable
     }
 
     [Fact]
+    public async Task can_specify_background_color()
+    {
+        using CompositeKernel kernel = new CompositeKernel
+        {
+            new CSharpKernel().UseNugetDirective(),
+        };
+
+        var extension = new KernelExtension();
+
+        await extension.OnLoadAsync(kernel);
+
+        KernelCommandResult result = await kernel.SubmitCodeAsync(@"
+#!mermaid --display-background-color red
+    graph TD
+    A[Client] --> B[Load Balancer]
+    B --> C[Server1]
+    B --> D[Server2]
+");
+
+        var events = result.KernelEvents.ToSubscribedList();
+
+        var formattedData = events
+            .OfType<DisplayedValueProduced>()
+            .Single()
+            .FormattedValues
+            .Single(fm => fm.MimeType == HtmlFormatter.MimeType)
+            .Value;
+
+        this.Assent(formattedData.FixedGuid().FixedCacheBuster(), _configuration);
+    }
+
+    [Fact]
+    public async Task can_specify_display_dimensions()
+    {
+        using CompositeKernel kernel = new CompositeKernel
+        {
+            new CSharpKernel().UseNugetDirective(),
+        };
+
+        var extension = new KernelExtension();
+
+        await extension.OnLoadAsync(kernel);
+
+        KernelCommandResult result = await kernel.SubmitCodeAsync(@"
+#!mermaid --display-width 200px --display-height 250px
+    graph TD
+    A[Client] --> B[Load Balancer]
+    B --> C[Server1]
+    B --> D[Server2]
+");
+
+        var events = result.KernelEvents.ToSubscribedList();
+
+        var formattedData = events
+            .OfType<DisplayedValueProduced>()
+            .Single()
+            .FormattedValues
+            .Single(fm => fm.MimeType == HtmlFormatter.MimeType)
+            .Value;
+
+        this.Assent(formattedData.FixedGuid().FixedCacheBuster(), _configuration);
+    }
+
+    [Fact]
     public async Task can_use_extension_methods_from_the_kernel_extension()
     {
         using CompositeKernel kernel = new CompositeKernel

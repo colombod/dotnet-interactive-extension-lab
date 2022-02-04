@@ -1,4 +1,4 @@
-<div style="background-color:white;">
+<div style="background-color:white">
 <script type="text/javascript">
 
 loadMermaid_00000000000000000000000000000000 = () => {

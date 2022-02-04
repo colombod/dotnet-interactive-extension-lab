@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -161,20 +162,36 @@ public static class MermaidExtensions
         return kernel;
     }
 
-    private static IHtmlContent GenerateHtml(MermaidMarkdown markdown, Uri? libraryUri, string? libraryVersion, string? cacheBuster)
+    internal static IHtmlContent GenerateHtml(MermaidMarkdown markdown, Uri? libraryUri, string? libraryVersion, string? cacheBuster)
     {
         var requireUri = new Uri("https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
         var divId = Guid.NewGuid().ToString("N");
         var code = new StringBuilder();
         var functionName = $"loadMermaid_{divId}";
-        code.AppendLine("<div style=\"background-color:white;\">");
+        code.AppendLine($"<div style=\"background-color:{markdown.Background}\">");
 
         code.AppendLine(@"<script type=""text/javascript"">");
         code.AppendJsCode(divId, functionName, libraryUri, libraryVersion, cacheBuster, markdown.ToString());
         code.AppendLine(JavascriptUtilities.GetCodeForEnsureRequireJs(requireUri, functionName));
         code.AppendLine("</script>");
+        var style = string.Empty;
+        if (!string.IsNullOrWhiteSpace(markdown.Width) || !string.IsNullOrWhiteSpace(markdown.Width))
+        {
+            style = " style=\"";
 
-        code.AppendLine($"<div id=\"{divId}\"></div>");
+            if (!string.IsNullOrWhiteSpace(markdown.Width))
+            {
+                style += $" width:{markdown.Width}; ";
+            }
+
+            if (!string.IsNullOrWhiteSpace(markdown.Height))
+            {
+                style += $" height:{markdown.Height}; ";
+            }
+
+            style += "\" ";
+        }
+        code.AppendLine($"<div id=\"{divId}\"{style}></div>");
         code.AppendLine("</div>");
 
         var html = new HtmlString(code.ToString());
