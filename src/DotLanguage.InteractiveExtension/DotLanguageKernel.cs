@@ -26,8 +26,8 @@ internal class DotLanguageKernel : Kernel,
         var height = "600px";
         if (ChooseKernelDirective is ChooseDotLanguageKernelDirective chooser)
         {
-            width = command.KernelChooserParseResult.ValueForOption(chooser.WidthOption);
-            height = command.KernelChooserParseResult.ValueForOption(chooser.HeightOption);
+            width = command.KernelChooserParseResult.GetValueForOption(chooser.WidthOption);
+            height = command.KernelChooserParseResult.GetValueForOption(chooser.HeightOption);
         }
 
         var code = GenerateHtml(command.Code, new Uri("https://visjs.github.io/vis-network/standalone/umd/vis-network.min.js", UriKind.Absolute), null, _cacheBuster, width, height);
