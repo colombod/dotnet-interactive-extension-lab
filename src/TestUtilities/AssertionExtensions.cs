@@ -73,14 +73,7 @@ public static class AssertionExtensions
 
         return new AndConstraint<GenericCollectionAssertions<T>>(assertions);
     }
-
-    public static AndConstraint<StringCollectionAssertions> BeEquivalentSequenceTo(
-        this StringCollectionAssertions assertions,
-        params string[] expectedValues)
-    {
-        return assertions.ContainInOrder(expectedValues).And.BeEquivalentTo(expectedValues);
-    }
-
+    
     public static AndWhichConstraint<ObjectAssertions, T> ContainSingle<T>(
         this GenericCollectionAssertions<KernelCommand> should,
         Func<T, bool>? where = null)

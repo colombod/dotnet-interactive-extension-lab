@@ -13,7 +13,7 @@ public class KernelExtension : IKernelExtension
             cs.Add(new DotLanguageKernel());
             KernelInvocationContext.Current?.Display(
                 new HtmlString(@"<details><summary>Draw networks using dot language.</summary>
-        <p>This extension adds support for dot language. Try this code:</p>
+        <p>This extension adds support for <a href=""https://www.graphviz.org/doc/info/lang.html"">dot language</a>. Try this code:</p>
 <pre>
     <code>
 #!dot
