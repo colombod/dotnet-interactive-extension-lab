@@ -5,6 +5,7 @@
 		<NoWarn>$(NoWarn);8002;VSTHRD002;VSTHRD200</NoWarn>
 		<!-- Assent isn't strongly signed -->
 		<Nullable>enable</Nullable>
+		<IsPackable>false</IsPackable>
 	</PropertyGroup>
 
 	<ItemGroup>
