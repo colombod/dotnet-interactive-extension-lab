@@ -1,6 +1,10 @@
 #!csharp
 
-#r "nuget: InteractiveExtension.DotLanguage, *-*"
+#i "nuget:D:\Repos\public\dotnet-interactive-extension-lab\packages"
+
+#!csharp
+
+#r "nuget: DotLanguage.InteractiveExtension, *-*"
 
 #!csharp
 

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Text.Encodings.Web;
+using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Html;
 using Microsoft.DotNet.Interactive;
 using Microsoft.DotNet.Interactive.Formatting;
@@ -206,7 +206,7 @@ public static class MermaidExtensions
 {functionName} = () => {{");
         if (libraryUri is not null)
         {
-            var libraryAbsoluteUri = libraryUri.AbsoluteUri.Replace(".js", string.Empty);
+            var libraryAbsoluteUri = Regex.Replace(libraryUri.AbsoluteUri, @"(\.js)$", string.Empty);
             cacheBuster ??= Guid.NewGuid().ToString("N");
             stringBuilder.AppendLine($@" 
         (require.config({{ 'paths': {{ 'context': '{libraryVersion}', 'mermaidUri' : '{libraryAbsoluteUri}', 'urlArgs': 'cacheBuster={cacheBuster}' }}}}) || require)(['mermaidUri'], (mermaid) => {{");

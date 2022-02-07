@@ -12,7 +12,7 @@
 		<Version>0.0.1</Version>
 		<Authors>Diego Colombo</Authors>
 		<PackageTags>mermaid mermaid-js diagram graph  interactive interactive-extension</PackageTags>
-		<PackageId>nteract.InteractiveExtension</PackageId>
+		<PackageId>mermaid.InteractiveExtension</PackageId>
 		<IncludeBuildOutput>true</IncludeBuildOutput>
 		<Nullable>enable</Nullable>
 		<LangVersion>latest</LangVersion>

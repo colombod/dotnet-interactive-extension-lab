@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Html;
 using Microsoft.DotNet.Interactive;
@@ -65,7 +66,7 @@ internal class DotLanguageKernel : Kernel,
         stringBuilder.AppendLine($@"
 {functionName} = () => {{");
        
-        var libraryAbsoluteUri = libraryUri.AbsoluteUri.Replace(".js", string.Empty);
+        var libraryAbsoluteUri = Regex.Replace(libraryUri.AbsoluteUri, @"(\.js)$", string.Empty);
         cacheBuster ??= Guid.NewGuid().ToString("N");
         stringBuilder.AppendLine($@" 
         (require.config({{ 'paths': {{ 'context': '{libraryVersion}', 'visjs' : '{libraryAbsoluteUri}', 'urlArgs': 'cacheBuster={cacheBuster}' }}}}) || require)(['visjs'], (visjs) => {{");
