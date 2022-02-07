@@ -3,7 +3,7 @@
 
 loadMermaid_00000000000000000000000000000000 = () => {
  
-        (require.config({ 'paths': { 'context': '8.13.10', 'mermaidUri' : 'https://cdndelivr.net/npm/mermaid@8.13.10/dist/mermaid.min', 'urlArgs': 'cacheBuster=00000000000000000000000000000000' }}) || require)(['mermaidUri'], (mermaid) => {
+        (require.config({ 'paths': { 'context': '8.13.10', 'mermaidUri' : 'https://cdn.jsdelivr.net/npm/mermaid@8.13.10/dist/mermaid.min', 'urlArgs': 'cacheBuster=00000000000000000000000000000000' }}) || require)(['mermaidUri'], (mermaid) => {
 
             let renderTarget = document.getElementById('00000000000000000000000000000000');
             mermaid.mermaidAPI.render( 

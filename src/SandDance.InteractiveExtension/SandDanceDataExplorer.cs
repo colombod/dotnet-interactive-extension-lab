@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Html;
 using Microsoft.DotNet.Interactive;
 using Microsoft.DotNet.Interactive.Formatting.TabularData;
@@ -63,7 +64,7 @@ public class SandDanceDataExplorer : DataExplorer<TabularDataResource>
 {functionName} = () => {{");
         if (libraryUri is not null)
         {
-            var libraryAbsoluteUri = libraryUri.AbsoluteUri.Replace(".js", string.Empty);
+            var libraryAbsoluteUri = Regex.Replace(libraryUri.AbsoluteUri, @"(\.js)$", string.Empty);
             cacheBuster ??= libraryAbsoluteUri.GetHashCode().ToString("0");
             stringBuilder.AppendLine($@"
     (require.config({{ 'paths': {{ 'context': '{libraryVersion}', 'sandDanceUri' : '{libraryAbsoluteUri}', 'urlArgs': 'cacheBuster={cacheBuster}' }}}}) || require)(['sandDanceUri'], (sandDance) => {{");
