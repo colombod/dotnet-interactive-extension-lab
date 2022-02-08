@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageSharp.InteractiveExten
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenCvSharp4.InteractiveExtension", "src\OpenCvSharp4.InteractiveExtension\OpenCvSharp4.InteractiveExtension.csproj", "{6295FC87-8604-4478-A7A9-CA582C0DFAA9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System.Drawing.InteractiveExtension", "src\System.Drawing.InteractiveExtension\System.Drawing.InteractiveExtension.csproj", "{518B1079-C4F7-4904-8AAD-CF4E9C570341}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotLanguage.InteractiveExtension", "src\DotLanguage.InteractiveExtension\DotLanguage.InteractiveExtension.csproj", "{FE8A1386-B785-4A72-944A-09B6BEBD6021}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mermaid.InteractiveExtension", "src\Mermaid.InteractiveExtension\Mermaid.InteractiveExtension.csproj", "{22BD460D-104F-4CDD-9807-68A13CDDBBC2}"
@@ -27,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nteract.InteractiveExtensio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SandDance.InteractiveExtensionTests", "src\SandDance.InteractiveExtension.Tests\SandDance.InteractiveExtensionTests.csproj", "{DD5A66A4-14AC-450E-8CAE-7C4AE731E89E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataView.InteractiveExtension", "src\DataView.InteractiveExtension\DataView.InteractiveExtension.csproj", "{A3D66CA8-6591-4AE4-908D-6EF22E70283D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,10 +41,6 @@ Global
 		{6295FC87-8604-4478-A7A9-CA582C0DFAA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6295FC87-8604-4478-A7A9-CA582C0DFAA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6295FC87-8604-4478-A7A9-CA582C0DFAA9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{518B1079-C4F7-4904-8AAD-CF4E9C570341}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{518B1079-C4F7-4904-8AAD-CF4E9C570341}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{518B1079-C4F7-4904-8AAD-CF4E9C570341}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{518B1079-C4F7-4904-8AAD-CF4E9C570341}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FE8A1386-B785-4A72-944A-09B6BEBD6021}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FE8A1386-B785-4A72-944A-09B6BEBD6021}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE8A1386-B785-4A72-944A-09B6BEBD6021}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -77,6 +73,10 @@ Global
 		{DD5A66A4-14AC-450E-8CAE-7C4AE731E89E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD5A66A4-14AC-450E-8CAE-7C4AE731E89E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD5A66A4-14AC-450E-8CAE-7C4AE731E89E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3D66CA8-6591-4AE4-908D-6EF22E70283D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3D66CA8-6591-4AE4-908D-6EF22E70283D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3D66CA8-6591-4AE4-908D-6EF22E70283D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3D66CA8-6591-4AE4-908D-6EF22E70283D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
