@@ -36,7 +36,6 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.22103.1" />
 		<PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.22103.1" />
-		<PackageReference Include="Microsoft.ML.DataView" Version="1.7.0" />
 	</ItemGroup>
 
 </Project>
