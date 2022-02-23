@@ -16,7 +16,7 @@ public static class DataViewExtensions
         return value;
     }
 
-    private static TabularDataResource ToTabularDataResource(this IDataView source)
+    public static TabularDataResource ToTabularDataResource(this IDataView source)
     {
         var fields = source.Schema.ToDictionary(column => column.Name, column => column.Type.RawType);
         var data = new List<Dictionary<string, object?>>();
