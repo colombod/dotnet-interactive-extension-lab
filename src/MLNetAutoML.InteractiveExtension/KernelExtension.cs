@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 using XPlot.Plotly;
 using static Microsoft.DotNet.Interactive.Formatting.PocketViewTags;
@@ -20,12 +21,37 @@ namespace MLNetAutoML.InteractiveExtension
         {
             Formatter.Register<NotebookMonitor>((monitor, writer) =>
             {
-                WriteSummaryAndChart(monitor, writer);
-                WriteRunTable(monitor, writer);
+                WriteSummary(monitor, writer);
+                WriteChart(monitor, writer);
+                WriteTable(monitor, writer);
             }, "text/html");
         }
 
-        private static void WriteSummaryAndChart(NotebookMonitor monitor, TextWriter writer)
+        private static void WriteSummary(NotebookMonitor monitor, TextWriter writer)
+        {
+
+            var summary = new List<IHtmlContent>();
+
+            if (monitor.BestTrial != null)
+            {
+                summary.Add(h3("Best Run"));
+                summary.Add(p($"Trial: {monitor.BestTrial.TrialSettings.TrialId}"));
+                summary.Add(p($"Pipeline: {monitor.BestTrial.TrialSettings.Pipeline}"));
+            }
+            if (monitor.ActiveTrial != null) {
+
+                var activeRunParam = JsonSerializer.Serialize(monitor.ActiveTrial.Parameter, new JsonSerializerOptions() { WriteIndented = true, });
+                
+                summary.Add(h3("Active Run"));
+                summary.Add(p($"Trial: {monitor.ActiveTrial.TrialId}"));
+                summary.Add(p($"Pipeline: {monitor.ActiveTrial.Pipeline}"));
+                summary.Add(p($"Parameters: {activeRunParam}"));
+            }
+
+            writer.Write(div(summary));
+        }
+
+        private static void WriteChart(NotebookMonitor monitor, TextWriter writer)
         {
             var chart = Chart.Plot(
                                         new Scatter()
@@ -48,31 +74,10 @@ namespace MLNetAutoML.InteractiveExtension
             var scriptJs = chart.GetInlineJS().Replace("<script>", String.Empty).Replace("</script>", String.Empty);
 
 
-            var bestRun = monitor.BestTrial == null ? "" :
-            $@"
-	<h3>Best Run</h3>
-	<p>
-		Trial: {monitor.BestTrial.TrialSettings.TrialId} <br>
-        Pipeline: {monitor.BestTrial.TrialSettings.Pipeline}<br>
-	</p>
-	";
 
-            // var activeRunParam = monitor.ActiveTrial == null ? "" : JsonSerializer.Serialize(monitor.ActiveTrial.Parameter, new JsonSerializerOptions() { WriteIndented = true, });
-            var activeRun = monitor.ActiveTrial == null ? "" :
-            $@"
-	<h3>Active Run</h3>
-	<p>
-		Trial: {monitor.ActiveTrial.TrialId} <br>
-		Pipeline: {monitor.ActiveTrial.Pipeline}<br>
-	</p>
-	";
 
 
             writer.Write($@"
-<div>
-	{bestRun}
-	{activeRun}
-</div>
 <div style=""width: {chart.Width}px; height: {chart.Height}px;"" id=""{chart.Id}"">
 </div>
 <script type=""text/javascript"">
@@ -102,7 +107,7 @@ else {{
 ");
         }
 
-        private static void WriteRunTable(NotebookMonitor notebookMonitor, TextWriter writer)
+        private static void WriteTable(NotebookMonitor notebookMonitor, TextWriter writer)
         {
                 const int maxRowCount = 10000;
                 const int rowsPerPage = 25;
