@@ -1,6 +1,7 @@
 ﻿using Microsoft.DotNet.Interactive;
 using Microsoft.ML.AutoML;
 using System.Collections.Generic;
+using Microsoft.Data.Analysis;
 
 namespace MLNetAutoML.InteractiveExtension
 {
@@ -12,10 +13,12 @@ namespace MLNetAutoML.InteractiveExtension
 		public TrialResult? MostRecentTrial { get; set; }
 		public TrialSettings? ActiveTrial { get; set; }
 		public List<TrialResult> CompletedTrials { get; set; }
+		public DataFrame DataFrame { get; set; }
 
 		public NotebookMonitor()
 		{
 			this.CompletedTrials = new List<TrialResult>();
+			this.DataFrame = new DataFrame(new PrimitiveDataFrameColumn<int>("Trial"), new PrimitiveDataFrameColumn<float>("Metric"), new StringDataFrameColumn("Pipeline"));
 		}
 
 		public void ReportBestTrial(TrialResult result)
@@ -28,6 +31,13 @@ namespace MLNetAutoML.InteractiveExtension
 		{
 			this.MostRecentTrial = result;
 			this.CompletedTrials.Add(result);
+
+			this.DataFrame.Append(new List<KeyValuePair<string, object>>()
+			{
+				new KeyValuePair<string, object>("Trial",result.TrialSettings.TrialId),
+				new KeyValuePair<string, object>("Metric", result.Metric),
+				new KeyValuePair<string, object>("Pipeline",result.TrialSettings.Pipeline.ToString()),
+			}, true);
 			Update();
 		}
 
