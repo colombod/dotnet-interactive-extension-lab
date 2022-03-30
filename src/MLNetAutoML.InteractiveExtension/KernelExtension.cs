@@ -71,40 +71,7 @@ namespace MLNetAutoML.InteractiveExtension
             chart.WithLegend(false);
 
 
-            var scriptJs = chart.GetInlineJS().Replace("<script>", String.Empty).Replace("</script>", String.Empty);
-
-
-
-
-
-            writer.Write($@"
-<div style=""width: {chart.Width}px; height: {chart.Height}px;"" id=""{chart.Id}"">
-</div>
-<script type=""text/javascript"">
-var renderPlotly = function() {{
-    var xplotRequire = require.config({{context:'xplot-3.0.1',paths:{{plotly:'https://cdn.plot.ly/plotly-1.49.2.min'}}}}) || require;
-    xplotRequire(['plotly'], function(Plotly) {{ 
-
-{scriptJs}
-        
-}});
-}};
-// ensure `require` is available globally
-if ((typeof(require) !==  typeof(Function)) || (typeof(require.config) !== typeof(Function))) {{
-    let require_script = document.createElement('script');
-    require_script.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js');
-    require_script.setAttribute('type', 'text/javascript');
-    require_script.onload = function() {{
-        renderPlotly();
-    }};
-
-    document.getElementsByTagName('head')[0].appendChild(require_script);
-}}
-else {{
-    renderPlotly();
-}}
-</script>
-");
+            Formatter.GetPreferredFormatterFor(typeof(PlotlyChart), "text/html").Format(chart, writer);
         }
 
         private static void WriteTable(NotebookMonitor notebookMonitor, TextWriter writer)
