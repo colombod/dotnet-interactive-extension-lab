@@ -2,12 +2,16 @@
 using Microsoft.ML.AutoML;
 using System.Collections.Generic;
 using Microsoft.Data.Analysis;
+using Apache.Arrow;
+using System;
+using System.Threading.Tasks;
 
 namespace MLNetAutoML.InteractiveExtension
 {
     public class NotebookMonitor : IMonitor
 	{
 		private DisplayedValue? ValueToUpdate;
+		private DateTime _lastUpdate = DateTime.MinValue;
 
 		public TrialResult? BestTrial { get; set; }
 		public TrialResult? MostRecentTrial { get; set; }
@@ -55,10 +59,25 @@ namespace MLNetAutoML.InteractiveExtension
 
 		public void Update()
 		{
-			if (this.ValueToUpdate != null)
+			Task.Run(async () =>
 			{
-				this.ValueToUpdate.Update(this);
-			}
+				int timeRemaining = 2000 - (int)(DateTime.Now - this._lastUpdate).TotalMilliseconds;
+
+				if (timeRemaining > 0)
+				{
+					await Task.Delay(timeRemaining);
+					Update();
+				}
+				else
+				{
+					if (this.ValueToUpdate != null)
+					{
+						this._lastUpdate = DateTime.Now;
+						this.ValueToUpdate.Update(this);
+					}
+				}
+			});
+
 		}
 
 		public void SetUpdate(DisplayedValue valueToUpdate)
