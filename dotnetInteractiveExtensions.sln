@@ -25,7 +25,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nteract.InteractiveExtensio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SandDance.InteractiveExtensionTests", "src\SandDance.InteractiveExtension.Tests\SandDance.InteractiveExtensionTests.csproj", "{DD5A66A4-14AC-450E-8CAE-7C4AE731E89E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataView.InteractiveExtension", "src\DataView.InteractiveExtension\DataView.InteractiveExtension.csproj", "{A3D66CA8-6591-4AE4-908D-6EF22E70283D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataView.InteractiveExtension", "src\DataView.InteractiveExtension\DataView.InteractiveExtension.csproj", "{A3D66CA8-6591-4AE4-908D-6EF22E70283D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lobe.InteractiveExtension", "src\lobe.InteractiveExtension\lobe.InteractiveExtension.csproj", "{B8EFD805-7997-4243-9D8C-505ABD67EE31}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,6 +79,10 @@ Global
 		{A3D66CA8-6591-4AE4-908D-6EF22E70283D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3D66CA8-6591-4AE4-908D-6EF22E70283D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3D66CA8-6591-4AE4-908D-6EF22E70283D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8EFD805-7997-4243-9D8C-505ABD67EE31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8EFD805-7997-4243-9D8C-505ABD67EE31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8EFD805-7997-4243-9D8C-505ABD67EE31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8EFD805-7997-4243-9D8C-505ABD67EE31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
