@@ -33,13 +33,14 @@ public class KernelExtension : IKernelExtension
     /// </summary>
     public static void RegisterFormatters()
     {
-        Formatter.Register<Image>(
-            (image, writer) =>
-            {
-                var id = Guid.NewGuid().ToString("N");
-                var imgTag = CreateImgTag(image, id, image.Height, image.Width);
-                writer.Write(imgTag);
-            }, HtmlFormatter.MimeType);
+
+        Formatter.Register((Image image, FormatContext context) =>
+        {
+            var id = Guid.NewGuid().ToString("N");
+            var imgTag = CreateImgTag(image, id, image.Height, image.Width);
+            context.Writer.Write(imgTag);
+            return true;
+        }, HtmlFormatter.MimeType);
 
 
         Formatter.Register<Color>((color, writer) =>
