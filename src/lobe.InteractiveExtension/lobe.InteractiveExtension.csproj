@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
@@ -20,9 +20,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="lobe" Version="1.0.29" />
-		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.22175.2" />
-		<PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.22175.2" />
+		<PackageReference Include="lobe" Version="1.0.33" />
+		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.22256.1" />
+		<PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.22256.1" />
 	</ItemGroup>
 
 	<ItemGroup>
