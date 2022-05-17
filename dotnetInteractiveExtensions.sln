@@ -29,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataView.InteractiveExtensi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lobe.InteractiveExtension", "src\lobe.InteractiveExtension\lobe.InteractiveExtension.csproj", "{B8EFD805-7997-4243-9D8C-505ABD67EE31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MLNetAutoML.InteractiveExtension", "MLNetAutoML.InteractiveExtension\MLNetAutoML.InteractiveExtension.csproj", "{BF67147A-41CC-4A17-AD5C-AB44432FD058}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MLNetAutoML.InteractiveExtension", "src\MLNetAutoML.InteractiveExtension\MLNetAutoML.InteractiveExtension.csproj", "{BF67147A-41CC-4A17-AD5C-AB44432FD058}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

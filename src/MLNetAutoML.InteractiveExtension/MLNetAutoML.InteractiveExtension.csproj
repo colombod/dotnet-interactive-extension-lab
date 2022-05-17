@@ -22,7 +22,7 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.21559.2" />
 		<PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.21559.2" />
-		<PackageReference Include="Microsoft.ML.AutoML" Version="0.20.3-dev.22174.1" />
+		<PackageReference Include="Microsoft.ML.AutoML" Version="0.20.0-preview.22226.2" />
 		<PackageReference Include="Microsoft.Data.Analysis" Version="0.19.1" />
 		<PackageReference Include="XPlot.Plotly" Version="4.0.1" />
 	</ItemGroup>
