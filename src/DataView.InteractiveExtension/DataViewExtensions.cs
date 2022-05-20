@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using Microsoft.DotNet.Interactive.Formatting.TabularData;
-using Microsoft.ML;
 
 // ReSharper disable CheckNamespace
 namespace Microsoft.ML;
