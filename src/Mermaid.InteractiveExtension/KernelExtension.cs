@@ -17,7 +17,7 @@ public class KernelExtension : IKernelExtension, IStaticContentSource
             compositeKernel.Add(new MermaidKernel());
         }
 
-        kernel.UseMermaid(libraryUri: new Uri(@"https://cdn.jsdelivr.net/npm/mermaid@8.13.10/dist/mermaid.min.js", UriKind.Absolute), libraryVersion: "8.13.10");
+        kernel.UseMermaid(libraryUri: new Uri(@"https://cdn.jsdelivr.net/npm/mermaid@9.1.1/dist/mermaid.min.js", UriKind.Absolute), libraryVersion: "9.1.1");
 
         var message = new HtmlString(
             $@"<details><summary>Explain things visually using the <a href=""https://mermaid-js.github.io/mermaid/"">Mermaid language</a>.</summary>
