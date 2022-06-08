@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>netstandard2.1</TargetFramework>
-		<PackageVersion>0.1.2</PackageVersion>
+		<TargetFramework>net6.0</TargetFramework>
+		<PackageVersion>0.2.0</PackageVersion>
 		<LangVersion>latest</LangVersion>
 		<IsPackable>true</IsPackable>
 		<PackageProjectUrl>https://github.com/colombod/dotnet-interactive-extension-lab</PackageProjectUrl>
@@ -10,7 +10,7 @@
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Description>Adds ML.NET AutoML Visualizations for .NET Interactive notebooks</Description>
 		<Copyright>2021, 2022</Copyright>
-		<Version>0.1.2</Version>
+		<Version>0.2.0</Version>
 		<Authors>Diego Colombo and Jake Radzikowski</Authors>
 		<PackageTags>MLNET ML.NET AutoML interactive interactive-extension</PackageTags>
 		<PackageId>MLNetAutoML.InteractiveExtension</PackageId>
@@ -23,7 +23,7 @@
 		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.21559.2" />
 		<PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.22256.1" />
 		<PackageReference Include="Microsoft.ML.AutoML" Version="0.20.0-preview.22226.2" />
-		<PackageReference Include="Microsoft.Data.Analysis" Version="0.19.1" />
+		<PackageReference Include="Microsoft.Data.Analysis" Version="0.20.0-preview.22226.2" />
 		<PackageReference Include="XPlot.Plotly" Version="4.0.6" />
 	</ItemGroup>
 

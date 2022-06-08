@@ -37,15 +37,16 @@ namespace MLNetAutoML.InteractiveExtension
             {
                 summary.Add(h3("Best Run"));
                 summary.Add(p($"Trial: {monitor.BestTrial.TrialSettings.TrialId}"));
-                summary.Add(p($"Pipeline: {monitor.BestTrial.TrialSettings.Pipeline}"));
+                summary.Add(p($"Trainer: {monitor.BestTrial.TrialSettings.Pipeline}".Replace("Unknown=>", "")));
             }
-            if (monitor.ActiveTrial != null) {
+            if (monitor.ActiveTrial != null)
+            {
 
                 var activeRunParam = JsonSerializer.Serialize(monitor.ActiveTrial.Parameter, new JsonSerializerOptions() { WriteIndented = true, });
-                
+
                 summary.Add(h3("Active Run"));
                 summary.Add(p($"Trial: {monitor.ActiveTrial.TrialId}"));
-                summary.Add(p($"Pipeline: {monitor.ActiveTrial.Pipeline}"));
+                summary.Add(p($"Trainer: {monitor.ActiveTrial.Pipeline}".Replace("Unknown=>", "")));
                 summary.Add(p($"Parameters: {activeRunParam}"));
             }
 
