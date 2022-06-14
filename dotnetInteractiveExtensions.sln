@@ -27,7 +27,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SandDance.InteractiveExtens
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataView.InteractiveExtension", "src\DataView.InteractiveExtension\DataView.InteractiveExtension.csproj", "{A3D66CA8-6591-4AE4-908D-6EF22E70283D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lobe.InteractiveExtension", "src\lobe.InteractiveExtension\lobe.InteractiveExtension.csproj", "{B8EFD805-7997-4243-9D8C-505ABD67EE31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "lobe.InteractiveExtension", "src\lobe.InteractiveExtension\lobe.InteractiveExtension.csproj", "{B8EFD805-7997-4243-9D8C-505ABD67EE31}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.Analysis.InteractiveExtension", "src\Data.Analysis.InteractiveExtension\Data.Analysis.InteractiveExtension.csproj", "{4CEF8D0B-D884-4DEA-A7FF-DE86F2F9F939}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MLNetAutoML.InteractiveExtension", "src\MLNetAutoML.InteractiveExtension\MLNetAutoML.InteractiveExtension.csproj", "{BF67147A-41CC-4A17-AD5C-AB44432FD058}"
 EndProject
@@ -89,6 +91,10 @@ Global
 		{BF67147A-41CC-4A17-AD5C-AB44432FD058}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF67147A-41CC-4A17-AD5C-AB44432FD058}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF67147A-41CC-4A17-AD5C-AB44432FD058}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CEF8D0B-D884-4DEA-A7FF-DE86F2F9F939}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CEF8D0B-D884-4DEA-A7FF-DE86F2F9F939}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CEF8D0B-D884-4DEA-A7FF-DE86F2F9F939}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CEF8D0B-D884-4DEA-A7FF-DE86F2F9F939}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
