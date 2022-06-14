@@ -32,8 +32,8 @@
 	<!-- sanddance resources -->
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.22256.1" />
-		<PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.22256.1" />
+		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.22314.1" />
+		<PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.22314.1" />
 	</ItemGroup>
 
 	<ItemGroup>
