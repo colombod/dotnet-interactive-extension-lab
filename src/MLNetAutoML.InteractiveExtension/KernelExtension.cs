@@ -17,7 +17,7 @@ namespace MLNetAutoML.InteractiveExtension
     public class KernelExtension : IKernelExtension
     {
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
-        public async Task OnLoadAsync(Kernel kernel)
+        public Task OnLoadAsync(Kernel kernel)
 #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             Formatter.Register<NotebookMonitor>((monitor, writer) =>
@@ -26,6 +26,8 @@ namespace MLNetAutoML.InteractiveExtension
                 WriteChart(monitor, writer);
                 WriteTable(monitor, writer);
             }, "text/html");
+
+            return Task.CompletedTask;
         }
 
         private static void WriteSummary(NotebookMonitor monitor, TextWriter writer)
