@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Html;
 using Microsoft.DotNet.Interactive;
 using Microsoft.DotNet.Interactive.Commands;
-using Microsoft.DotNet.Interactive.Http;
 
 namespace DotLanguage.InteractiveExtension;
 
@@ -31,7 +29,7 @@ internal class DotLanguageKernel : Kernel,
             height = command.KernelChooserParseResult.GetValueForOption(chooser.HeightOption);
         }
 
-        var code = GenerateHtml(command.Code, new Uri("https://visjs.github.io/vis-network/standalone/umd/vis-network.min.js", UriKind.Absolute), null, _cacheBuster, width, height);
+        var code = GenerateHtml(command.Code, new Uri("https://cdn.jsdelivr.net/npm/@hpcc-js/wasm@1.14.1/dist/index.min.js", UriKind.Absolute),  width, height);
         context.Display(code);
         return Task.CompletedTask;
 
@@ -39,48 +37,49 @@ internal class DotLanguageKernel : Kernel,
 
     public override ChooseKernelDirective ChooseKernelDirective => _chooseKernelDirective ??= new ChooseDotLanguageKernelDirective(this);
 
-    private IHtmlContent GenerateHtml(string commandCode, Uri libraryUri, string? libraryVersion, string cacheBuster, string? width, string? height)
+    private IHtmlContent GenerateHtml(string commandCode, Uri libraryUri,  string? width, string? height)
     {
-        var requireUri = new Uri("https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
+       
         var divId = Guid.NewGuid().ToString("N");
         var code = new StringBuilder();
-        var functionName = $"loadVisjs_{divId}";
+        var functionName = $"loadHpccWasm_{divId}";
         code.AppendLine("<div >");
 
-        code.AppendLine(@"<script type=""text/javascript"">");
-        AppendJsCode(code, divId, functionName, libraryUri, libraryVersion, cacheBuster,commandCode);
-        code.AppendLine(JavascriptUtilities.GetCodeForEnsureRequireJs(requireUri, functionName));
-        code.AppendLine("</script>");
+       
 
         code.AppendLine($"<div id=\"{divId}\" style=\"height:{height}; width:{width}\"></div>");
         code.AppendLine("</div>");
 
+        code.AppendLine(@"<script type=""text/javascript"" defer>");
+        AppendJsCode(code, divId, functionName, libraryUri, commandCode);
+        code.AppendLine("</script>");        
+        
         var html = new HtmlString(code.ToString());
         return html;
     }
 
     private static void AppendJsCode(StringBuilder stringBuilder,
-        string divId, string functionName, Uri libraryUri, string? libraryVersion, string cacheBuster, string code)
+        string divId, string functionName, Uri libraryUri, string code)
     {
-        libraryVersion ??= "1.0.0";
+  
         stringBuilder.AppendLine($@"
-{functionName} = () => {{");
-       
-        var libraryAbsoluteUri = Regex.Replace(libraryUri.AbsoluteUri, @"(\.js)$", string.Empty);
-        cacheBuster ??= Guid.NewGuid().ToString("N");
-        stringBuilder.AppendLine($@" 
-        (require.config({{ 'paths': {{ 'context': '{libraryVersion}', 'visjs' : '{libraryAbsoluteUri}', 'urlArgs': 'cacheBuster={cacheBuster}' }}}}) || require)(['visjs'], (visjs) => {{");
+{functionName} = () => {{
+    let container = document.getElementById('{divId}');
+    const dot = `{code}`;
             
+    let hpccWasm = window['@hpcc-js/wasm'];
+    hpccWasm.graphviz.layout(dot, ""svg"", ""dot"").then(svg => {{ container.innerHTML = svg; }});
+}}
 
-        stringBuilder.AppendLine($@"
-            let container = document.getElementById('{divId}');
-            let dot = `{code}`;
-            let data = visjs.parseDOTNetwork(dot);
-            let network = new visjs.Network(container, data); 
-        }},
-        (error) => {{
-            console.log(error);
-        }});
+if (window[""@hpcc-js/wasm""]) {{
+    {functionName}();
+    }} else {{
+    let hpccWasm_script = document.createElement('script');
+    hpccWasm_script.setAttribute('src', '{libraryUri.AbsoluteUri}');
+    hpccWasm_script.setAttribute('type', 'text/javascript');
+    hpccWasm_script.setAttribute('defer', 'true');
+    hpccWasm_script.onload = () => {{ {functionName}(); }};
+    document.getElementsByTagName('head')[0].appendChild(hpccWasm_script);
 }}");
     }
 }
