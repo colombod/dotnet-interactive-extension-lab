@@ -44,14 +44,14 @@ internal class DotLanguageKernel : Kernel,
         var requireUri = new Uri("https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
         var divId = Guid.NewGuid().ToString("N");
         var code = new StringBuilder();
-        var functionName = $"loadHpcc_{divId}";
+        var renderingFunctionName = $"loadHpcc_{divId}";
         code.AppendLine("<div >");
 
         code.AppendLine($"<div id=\"{divId}\" style=\"height:{height}; width:{width}\"></div>");
 
         code.AppendLine(@"<script type=""text/javascript"" defer>");
-        AppendJsCode(code, divId, functionName, libraryUri, wasmFolder, libraryVersion, cacheBuster, commandCode);
-        code.AppendLine(JavascriptUtilities.GetCodeForEnsureRequireJs(requireUri, functionName));
+        AppendJsCode(code, divId, renderingFunctionName, libraryUri, wasmFolder, libraryVersion, cacheBuster, commandCode);
+        code.AppendLine(JavascriptUtilities.GetCodeForEnsureRequireJs(requireUri, renderingFunctionName));
         code.AppendLine("</script>");
 
        
