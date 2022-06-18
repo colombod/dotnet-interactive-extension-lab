@@ -27,11 +27,11 @@ internal class DotLanguageKernel : Kernel,
         var height = "600px";
         if (ChooseKernelDirective is ChooseDotLanguageKernelDirective chooser)
         {
-            width = command.KernelChooserParseResult.GetValueForOption(chooser.WidthOption);
-            height = command.KernelChooserParseResult.GetValueForOption(chooser.HeightOption);
+            width = command.KernelChooserParseResult?.GetValueForOption(chooser.WidthOption);
+            height = command.KernelChooserParseResult?.GetValueForOption(chooser.HeightOption);
         }
-
-        var code = GenerateHtml(command.Code, new Uri("https://cdn.jsdelivr.net/npm/@hpcc-js/wasm@1.14.1/dist/index.min.js", UriKind.Absolute), "1.14.1", _cacheBuster, width, height);
+        
+        var code = GenerateHtml(command.Code, new Uri("https://cdn.jsdelivr.net/npm/@hpcc-js/wasm@1.14.1/dist/index.min.js", UriKind.Absolute), new Uri("https://cdn.jsdelivr.net/npm/@hpcc-js/wasm@1.14.1/dist", UriKind.Absolute), "1.14.1", _cacheBuster, width, height);
         context.Display(code);
         return Task.CompletedTask;
 
@@ -39,7 +39,7 @@ internal class DotLanguageKernel : Kernel,
 
     public override ChooseKernelDirective ChooseKernelDirective => _chooseKernelDirective ??= new ChooseDotLanguageKernelDirective(this);
 
-    private IHtmlContent GenerateHtml(string commandCode, Uri libraryUri, string? libraryVersion, string cacheBuster, string? width, string? height)
+    private IHtmlContent GenerateHtml(string commandCode, Uri libraryUri, Uri wasmFolder, string? libraryVersion, string cacheBuster, string? width, string? height)
     {
         var requireUri = new Uri("https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
         var divId = Guid.NewGuid().ToString("N");
@@ -47,12 +47,14 @@ internal class DotLanguageKernel : Kernel,
         var functionName = $"loadHpcc_{divId}";
         code.AppendLine("<div >");
 
-        code.AppendLine(@"<script type=""text/javascript"">");
-        AppendJsCode(code, divId, functionName, libraryUri, libraryVersion, cacheBuster, commandCode);
+        code.AppendLine($"<div id=\"{divId}\" style=\"height:{height}; width:{width}\"></div>");
+
+        code.AppendLine(@"<script type=""text/javascript"" defer>");
+        AppendJsCode(code, divId, functionName, libraryUri, wasmFolder, libraryVersion, cacheBuster, commandCode);
         code.AppendLine(JavascriptUtilities.GetCodeForEnsureRequireJs(requireUri, functionName));
         code.AppendLine("</script>");
 
-        code.AppendLine($"<div id=\"{divId}\" style=\"height:{height}; width:{width}\"></div>");
+       
         code.AppendLine("</div>");
 
         var html = new HtmlString(code.ToString());
@@ -60,7 +62,7 @@ internal class DotLanguageKernel : Kernel,
     }
 
     private static void AppendJsCode(StringBuilder stringBuilder,
-        string divId, string functionName, Uri libraryUri, string? libraryVersion, string cacheBuster, string code)
+        string divId, string functionName, Uri libraryUri, Uri wasmFolder, string? libraryVersion, string cacheBuster, string code)
     {
         libraryVersion ??= "1.14.1";
         stringBuilder.AppendLine($@"
@@ -75,6 +77,7 @@ internal class DotLanguageKernel : Kernel,
         stringBuilder.AppendLine($@"
             let container = document.getElementById('{divId}');
             let dot = `{code}`;
+            hpcc.wasmFolder(`{wasmFolder.AbsoluteUri}`);
             hpcc.graphviz.layout(dot, ""svg"", ""dot"").then(svg => {{ container.innerHTML = svg; }});
         }},
         (error) => {{
