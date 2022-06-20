@@ -13,18 +13,19 @@ public class KernelExtension : IKernelExtension
             cs.Add(new DotLanguageKernel());
             KernelInvocationContext.Current?.Display(
                 new HtmlString(@"<details><summary>Draw networks using dot language.</summary>
-        <p>This extension adds support for <a href=""https://www.graphviz.org/doc/info/lang.html"">dot language</a>. Try this code:</p>
+        <p>This extension adds support for <a href=""https://www.graphviz.org/doc/info/lang.html"">dot language</a> via <a href=""https://github.com/hpcc-systems/hpcc-js-wasm"">hpcc-js/wasm</a>. Try this code:</p>
 <pre>
     <code>
 #!dot
-dinetwork {node[shape=circle]; 1 -> 1 -> 2; 2 -> 3; 2 -- 4; 2 -> 1 [style=dotted, width=3] }
-    </code>
-</pre>
-<p>Display size can be changed. Try this code:</p>
-<pre>
-    <code>
-#!dot --display-height 300px
-dinetwork {node[shape=circle]; 1 -> 1 -> 2; 2 -> 3; 2 -- 4; 2 -> 1 [style=dotted, width=3] }
+graph ethane {
+    C_0 -- H_0 [type=s];
+    C_0 -- H_1 [type=s];
+    C_0 -- H_2 [type=s];
+    C_0 -- C_1 [type=s];
+    C_1 -- H_3 [type=s];
+    C_1 -- H_4 [type=s];
+    C_1 -- H_5 [type=s];
+}
     </code>
 </pre>
         </details>"),
