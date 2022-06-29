@@ -8,7 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
-using XPlot.Plotly;
+using Plotly.NET.CSharp;
 using static Microsoft.DotNet.Interactive.Formatting.PocketViewTags;
 
 
@@ -57,25 +57,15 @@ namespace MLNetAutoML.InteractiveExtension
 
         private static void WriteChart(NotebookMonitor monitor, TextWriter writer)
         {
-            var chart = Chart.Plot(
-                                        new Scatter()
-                                        {
-                                            x = monitor.CompletedTrials.Select(x => x.TrialSettings.TrialId),
-                                            y = monitor.CompletedTrials.Select(x => x.Metric),
-                                            mode = "markers",
-                                        }
-                                    );
+            var x = monitor.CompletedTrials.Select(x => x.TrialSettings.TrialId);
+            var y = monitor.CompletedTrials.Select(x => x.Metric);
 
-            var layout = new Layout.Layout() { title = $"Plot metrics over trials." };
-            chart.WithLayout(layout);
-            chart.Width = 500;
-            chart.Height = 500;
-            chart.WithXTitle("Trial");
-            chart.WithYTitle("Metric");
-            chart.WithLegend(false);
+            var chart = Chart.Point<int, double, string>(x, y, "Hello")
+            .WithTraceInfo(ShowLegend: false)
+            .WithXAxisStyle<double, double, string>(TitleText: "Trial", ShowGrid: false)
+            .WithYAxisStyle<double, double, string>(TitleText: "Metric", ShowGrid: false);
 
-
-            Formatter.GetPreferredFormatterFor(typeof(PlotlyChart), "text/html").Format(chart, writer);
+            Formatter.GetPreferredFormatterFor(typeof(Plotly.NET.GenericChart.GenericChart), "text/html").Format(chart, writer);
         }
 
         private static void WriteTable(NotebookMonitor notebookMonitor, TextWriter writer)

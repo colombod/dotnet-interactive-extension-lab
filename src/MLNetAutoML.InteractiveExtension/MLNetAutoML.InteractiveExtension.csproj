@@ -20,11 +20,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.21559.2" />
-		<PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.22256.1" />
+		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.22314.1" />
+		<PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.22314.1" />
 		<PackageReference Include="Microsoft.ML.AutoML" Version="0.20.0-preview.22313.1" />
 		<PackageReference Include="Microsoft.Data.Analysis" Version="0.20.0-preview.22313.1" />
-		<PackageReference Include="XPlot.Plotly" Version="4.0.6" />
+		<PackageReference Include="Plotly.NET.CSharp" Version="0.0.1" />
 	</ItemGroup>
 
 	<ItemGroup>
