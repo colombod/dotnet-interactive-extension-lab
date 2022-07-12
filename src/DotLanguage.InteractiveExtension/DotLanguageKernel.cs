@@ -31,7 +31,7 @@ internal class DotLanguageKernel : Kernel,
             height = command.KernelChooserParseResult?.GetValueForOption(chooser.HeightOption);
         }
         
-        var code = GenerateHtml(command.Code, new Uri("https://cdn.jsdelivr.net/npm/@hpcc-js/wasm@1.14.1/dist/index.min.js", UriKind.Absolute), new Uri("https://cdn.jsdelivr.net/npm/@hpcc-js/wasm@1.14.1/dist", UriKind.Absolute), "1.14.1", _cacheBuster, width, height);
+        var code = GenerateHtml(command.Code, new Uri("https://cdn.jsdelivr.net/npm/@hpcc-js/wasm@1.15.0/dist/index.min.js", UriKind.Absolute), new Uri("https://cdn.jsdelivr.net/npm/@hpcc-js/wasm@1.15.0/dist", UriKind.Absolute), "1.15.0", _cacheBuster, width, height);
         context.Display(code);
         return Task.CompletedTask;
 
@@ -65,7 +65,7 @@ internal class DotLanguageKernel : Kernel,
     private static void AppendJsCode(StringBuilder stringBuilder,
         string divId, string functionName, Uri libraryUri, Uri wasmFolder, string? libraryVersion, string cacheBuster, string code)
     {
-        libraryVersion ??= "1.14.1";
+        libraryVersion ??= "1.15.0";
         stringBuilder.AppendLine($@"
 {functionName} = () => {{");
 
