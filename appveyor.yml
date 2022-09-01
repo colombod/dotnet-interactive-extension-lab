@@ -30,18 +30,12 @@ install:
     - cmd: cd ./src/SandDance.InteractiveExtension.js/
     - npm ci 
     - cmd: cd ../.. 
-    - cmd: cd ./src/nteract.InteractiveExtension.js/
-    - npm ci 
-    - cmd: cd ../.. 
 before_build:
   - cmd: dotnet --version
   - cmd: dotnet restore dotnetInteractiveExtensions.sln --verbosity q
  
 build_script:
   - cmd: cd ./src/SandDance.InteractiveExtension.js/
-  - npm run compile 
-  - cmd: cd ../.. 
-  - cmd: cd ./src/nteract.InteractiveExtension.js/
   - npm run compile 
   - cmd: cd ../.. 
   - cmd: dotnet build dotnetInteractiveExtensions.sln -c Release

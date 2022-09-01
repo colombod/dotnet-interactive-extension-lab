@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
@@ -15,11 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SandDance.InteractiveExtens
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestUtilities", "src\TestUtilities\TestUtilities.csproj", "{E8D06DD3-47C6-4D5F-AFB8-CF9AD2804D25}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nteract.InteractiveExtension", "src\nteract.InteractiveExtension\nteract.InteractiveExtension.csproj", "{68C2EC35-D961-49C4-9D49-9D71D9A2FAF5}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nteract.InteractiveExtension.Tests", "src\nteract.InteractiveExtension.Tests\nteract.InteractiveExtension.Tests.csproj", "{A1092584-B367-4033-9ADE-3B35C840892D}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SandDance.InteractiveExtension.Tests", "src\SandDance.InteractiveExtension.Tests\SandDance.InteractiveExtension.Tests.csproj", "{DD5A66A4-14AC-450E-8CAE-7C4AE731E89E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SandDance.InteractiveExtensionTests", "src\SandDance.InteractiveExtension.Tests\SandDance.InteractiveExtensionTests.csproj", "{DD5A66A4-14AC-450E-8CAE-7C4AE731E89E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataView.InteractiveExtension", "src\DataView.InteractiveExtension\DataView.InteractiveExtension.csproj", "{A3D66CA8-6591-4AE4-908D-6EF22E70283D}"
 EndProject
@@ -57,14 +53,6 @@ Global
 		{E8D06DD3-47C6-4D5F-AFB8-CF9AD2804D25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8D06DD3-47C6-4D5F-AFB8-CF9AD2804D25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8D06DD3-47C6-4D5F-AFB8-CF9AD2804D25}.Release|Any CPU.Build.0 = Release|Any CPU
-		{68C2EC35-D961-49C4-9D49-9D71D9A2FAF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{68C2EC35-D961-49C4-9D49-9D71D9A2FAF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{68C2EC35-D961-49C4-9D49-9D71D9A2FAF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{68C2EC35-D961-49C4-9D49-9D71D9A2FAF5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A1092584-B367-4033-9ADE-3B35C840892D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A1092584-B367-4033-9ADE-3B35C840892D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A1092584-B367-4033-9ADE-3B35C840892D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A1092584-B367-4033-9ADE-3B35C840892D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DD5A66A4-14AC-450E-8CAE-7C4AE731E89E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DD5A66A4-14AC-450E-8CAE-7C4AE731E89E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD5A66A4-14AC-450E-8CAE-7C4AE731E89E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -95,7 +83,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E8D06DD3-47C6-4D5F-AFB8-CF9AD2804D25} = {20C4282E-81DE-47F2-838A-C820F746C04A}
-		{A1092584-B367-4033-9ADE-3B35C840892D} = {20C4282E-81DE-47F2-838A-C820F746C04A}
 		{DD5A66A4-14AC-450E-8CAE-7C4AE731E89E} = {20C4282E-81DE-47F2-838A-C820F746C04A}
 		{871EB7AE-24D9-41A4-A2FF-3895B9FC17F1} = {20C4282E-81DE-47F2-838A-C820F746C04A}
 	EndGlobalSection
