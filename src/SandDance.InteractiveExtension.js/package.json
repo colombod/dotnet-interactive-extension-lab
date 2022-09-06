@@ -28,10 +28,7 @@
   },
   "homepage": "https://github.com/colombod/dotnet-interactive-extension-lab",
   "dependencies": {
-    "@deck.gl/core": "8.3.7",
-    "@deck.gl/layers": "8.3.7",
     "@msrvida/sanddance-explorer": "3.2.0",
-    "@luma.gl/core": "8.3.1",
     "@fluentui/react": "7.150.0",
     "vega": "5.17.3",
     "react": "16.13.1",
