@@ -1,7 +1,6 @@
 // Copyright (c) .NET Foundation and contributors. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-import { Data } from "./dataTypes";
 import * as fluentui from '@fluentui/react';
 import * as vega from 'vega';
 import * as React from 'react';
@@ -10,10 +9,11 @@ import { Explorer, use, Props } from '@msrvida/sanddance-explorer';
 import "@msrvida/sanddance-explorer/dist/css/sanddance-explorer.css";
 import "./app.css";
 import { SandDanceDataExplorerCommandHandler } from "./SandDanceDataExplorerCommandHandler";
+import { Data } from "./dataTypes";
 
 fluentui.initializeIcons();
 
-use(fluentui, React, ReactDOM, vega);
+use(fluentui, React, ReactDOM, <any>vega);
 
 export interface DataExplorerSettings {
     container: HTMLDivElement,
