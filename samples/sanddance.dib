@@ -1,0 +1,16 @@
+#!csharp
+
+#i "nuget:D:\Repos\public\dotnet-interactive-extension-lab\packages"
+
+#!csharp
+
+#r "nuget: SandDance.InteractiveExtension, *-*"
+
+#!csharp
+
+var rnd = new Random();
+var data = Enumerable.Range(0,50).Select(_ => new { x = rnd.Next(0,500),y = rnd.Next(0,500), value1 = rnd.Next(0,500) , value2 = rnd.Next(0,500)} );
+
+#!csharp
+
+data.ExploreWithSandDance().Display();
