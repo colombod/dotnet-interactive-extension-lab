@@ -7,7 +7,6 @@ import * as vega from 'vega';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Explorer, use, Props } from '@msrvida/sanddance-explorer';
-
 import "@msrvida/sanddance-explorer/dist/css/sanddance-explorer.css";
 import "./app.css";
 import { SandDanceDataExplorerCommandHandler } from "./SandDanceDataExplorerCommandHandler";
