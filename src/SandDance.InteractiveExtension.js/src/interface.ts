@@ -13,7 +13,7 @@ import { Data } from "./dataTypes";
 
 fluentui.initializeIcons();
 
-use(fluentui, React, ReactDOM, <any>vega);
+use(fluentui, React, ReactDOM, vega);
 
 export interface DataExplorerSettings {
     container: HTMLDivElement,
