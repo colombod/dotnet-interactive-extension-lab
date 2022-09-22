@@ -9,14 +9,14 @@ using Microsoft.DotNet.Interactive.Http;
 
 namespace DotLanguage.InteractiveExtension;
 
-internal class DotLanguageKernel : Kernel,
+internal class NeatoLanguageKernel : Kernel,
     IKernelCommandHandler<SubmitCode>
 {
     private readonly string _cacheBuster;
 
-    private ChooseDotLanguageKernelDirective? _chooseKernelDirective;
+    private ChooseNeatoLanguageKernelDirective? _chooseKernelDirective;
 
-    public DotLanguageKernel() : base("dot")
+    public NeatoLanguageKernel() : base("neato")
     {
         _cacheBuster = Guid.NewGuid().ToString("N");
     }
@@ -30,14 +30,14 @@ internal class DotLanguageKernel : Kernel,
             width = command.KernelChooserParseResult?.GetValueForOption(chooser.WidthOption);
             height = command.KernelChooserParseResult?.GetValueForOption(chooser.HeightOption);
         }
-        
+
         var code = GenerateHtml(command.Code, new Uri("https://cdn.jsdelivr.net/npm/@hpcc-js/wasm@1.16.1/dist/index.min.js", UriKind.Absolute), new Uri("https://cdn.jsdelivr.net/npm/@hpcc-js/wasm@1.16.1/dist", UriKind.Absolute), "1.16.1", _cacheBuster, width, height);
         context.Display(code);
         return Task.CompletedTask;
 
     }
 
-    public override ChooseKernelDirective ChooseKernelDirective => _chooseKernelDirective ??= new ChooseDotLanguageKernelDirective(this);
+    public override ChooseKernelDirective ChooseKernelDirective => _chooseKernelDirective ??= new ChooseNeatoLanguageKernelDirective(this);
 
     private IHtmlContent GenerateHtml(string commandCode, Uri libraryUri, Uri wasmFolder, string? libraryVersion, string cacheBuster, string? width, string? height)
     {
@@ -77,9 +77,9 @@ internal class DotLanguageKernel : Kernel,
 
         stringBuilder.AppendLine($@"
             let container = document.getElementById('{divId}');
-            let dot = `{code}`;
+            let neato = `{code}`;
             hpcc.wasmFolder(`{wasmFolder.AbsoluteUri}`);
-            hpcc.graphviz.layout(dot, ""svg"", ""dot"").then(svg => {{ 
+            hpcc.graphviz.layout(neato, ""svg"", ""neato"").then(svg => {{ 
                 d3.select('#container_{divId}').html(svg);
                 svg = d3.select('#container_{divId}').select('svg');
                 let g = svg.select('g');
