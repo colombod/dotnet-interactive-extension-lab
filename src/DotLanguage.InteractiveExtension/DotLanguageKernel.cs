@@ -16,7 +16,7 @@ internal class DotLanguageKernel : Kernel,
 
     private ChooseDotLanguageKernelDirective? _chooseKernelDirective;
 
-    public DotLanguageKernel() : base("dot")
+    public DotLanguageKernel() : base("dot", languageName: "DOT Language")
     {
         _cacheBuster = Guid.NewGuid().ToString("N");
     }
