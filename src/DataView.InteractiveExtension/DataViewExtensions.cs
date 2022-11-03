@@ -19,13 +19,13 @@ public static class DataViewExtensions
     public static TabularDataResource ToTabularDataResource(this IDataView source)
     {
         var fields = source.Schema.ToDictionary(column => column.Name, column => column.Type.RawType);
-        var data = new List<Dictionary<string, object?>>();
+        var data = new List<List<KeyValuePair<string, object?>>>();
 
         var cursor = source.GetRowCursor(source.Schema);
 
         while (cursor.MoveNext())
         {
-            var rowObj = new Dictionary<string, object?>();
+            var rowObj = new List<KeyValuePair<string, object?>>();
 
             foreach (var column in source.Schema)
             {
@@ -43,7 +43,7 @@ public static class DataViewExtensions
                     value = value.ToString();
                 }
 
-                rowObj.Add(column.Name, value);
+                rowObj.Add(new KeyValuePair<string, object?>( column.Name, value));
             }
 
             data.Add(rowObj);
