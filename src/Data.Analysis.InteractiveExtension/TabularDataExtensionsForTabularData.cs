@@ -27,16 +27,16 @@ public static  class TabularDataExtensionsForTabularData
                 case TableSchemaFieldType.Null:
                     break;
                 case TableSchemaFieldType.Number:
-                    dataFrame.Columns.Add(new DoubleDataFrameColumn(fieldDescriptor.Name, tabularDataResource.Data.Select(d => (double)d[fieldDescriptor.Name])));
+                    dataFrame.Columns.Add(new DoubleDataFrameColumn(fieldDescriptor.Name, tabularDataResource.Data.Select(d => (double)d.First(v => v.Key ==fieldDescriptor.Name).Value)));
                     break;
                 case TableSchemaFieldType.Integer:
-                    dataFrame.Columns.Add(new Int64DataFrameColumn(fieldDescriptor.Name, tabularDataResource.Data.Select(d => (long)d[fieldDescriptor.Name])));
+                    dataFrame.Columns.Add(new Int64DataFrameColumn(fieldDescriptor.Name, tabularDataResource.Data.Select(d => (long)d.First(v => v.Key == fieldDescriptor.Name).Value)));
                     break;
                 case TableSchemaFieldType.Boolean:
-                    dataFrame.Columns.Add(new BooleanDataFrameColumn(fieldDescriptor.Name, tabularDataResource.Data.Select(d => (bool)d[fieldDescriptor.Name])));
+                    dataFrame.Columns.Add(new BooleanDataFrameColumn(fieldDescriptor.Name, tabularDataResource.Data.Select(d => (bool)d.First(v => v.Key == fieldDescriptor.Name).Value)));
                     break;
                 case TableSchemaFieldType.String:
-                    dataFrame.Columns.Add(new StringDataFrameColumn(fieldDescriptor.Name, tabularDataResource.Data.Select(d => (string)d[fieldDescriptor.Name])));
+                    dataFrame.Columns.Add(new StringDataFrameColumn(fieldDescriptor.Name, tabularDataResource.Data.Select(d => (string)d.First(v => v.Key == fieldDescriptor.Name).Value)));
                     break;
                 case TableSchemaFieldType.Array:
                     break;
