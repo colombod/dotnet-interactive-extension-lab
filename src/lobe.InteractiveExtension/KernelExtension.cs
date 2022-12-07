@@ -12,23 +12,23 @@ public class KernelExtension : IKernelExtension
     /// <inheritdoc/>
     public Task OnLoadAsync(Kernel kernel)
     {
-        Formatter.Register<Classification>((Classification classification, FormatContext context) =>
-        {
-            throw new NotImplementedException();
-            return true;
-        }, HtmlFormatter.MimeType);
+        //Formatter.Register<Classification>((Classification classification, FormatContext context) =>
+        //{
+        //    throw new NotImplementedException();
+        //    return true;
+        //}, HtmlFormatter.MimeType);
 
-        Formatter.Register<ClassificationResults>((ClassificationResults classificationResults, FormatContext context) =>
-        {
-            throw new NotImplementedException();
-            return true;
-        }, HtmlFormatter.MimeType);
+        //Formatter.Register<ClassificationResults>((ClassificationResults classificationResults, FormatContext context) =>
+        //{
+        //    throw new NotImplementedException();
+        //    return true;
+        //}, HtmlFormatter.MimeType);
 
-        Formatter.Register<ClassificationResults>((ClassificationResults classificationResults, FormatContext context) =>
-        {
-            throw new NotImplementedException();
-            return true;
-        }, CsvFormatter.MimeType);
+        //Formatter.Register<ClassificationResults>((ClassificationResults classificationResults, FormatContext context) =>
+        //{
+        //    throw new NotImplementedException();
+        //    return true;
+        //}, CsvFormatter.MimeType);
 
         Formatter.SetPreferredMimeTypesFor(typeof(ClassificationResults), HtmlFormatter.MimeType, CsvFormatter.MimeType);
 
