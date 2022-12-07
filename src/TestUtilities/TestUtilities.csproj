@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	  <IsPackable>false</IsPackable>
@@ -10,7 +10,7 @@
 	<ItemGroup>
 		<PackageReference Include="FluentAssertions" Version="6.8.0" />
 		<PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
-		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.22553.7" />
+		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.22606.2" />
 	</ItemGroup>
 
 </Project>

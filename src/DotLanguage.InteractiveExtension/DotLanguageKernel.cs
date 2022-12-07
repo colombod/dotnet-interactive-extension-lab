@@ -2,6 +2,7 @@
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Html;
 using Microsoft.DotNet.Interactive;
 using Microsoft.DotNet.Interactive.Commands;
@@ -9,15 +10,16 @@ using Microsoft.DotNet.Interactive.Http;
 
 namespace DotLanguage.InteractiveExtension;
 
-internal class DotLanguageKernel : Kernel,
+public class DotLanguageKernel : Kernel,
     IKernelCommandHandler<SubmitCode>
 {
     private readonly string _cacheBuster;
 
     private ChooseDotLanguageKernelDirective? _chooseKernelDirective;
 
-    public DotLanguageKernel() : base("dot", languageName: "DOT Language")
+    public DotLanguageKernel() : base("dot")
     {
+        KernelInfo.LanguageName = "DOT Language";
         _cacheBuster = Guid.NewGuid().ToString("N");
     }
 
