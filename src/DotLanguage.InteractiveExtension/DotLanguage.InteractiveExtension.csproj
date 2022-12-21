@@ -12,7 +12,7 @@
 		<Copyright>2021, 2022</Copyright>
 		<Version>0.0.1</Version>
 		<Authors>Diego Colombo</Authors>
-		<PackageTags>DotLanguage Network graph  interactive interactive-extension</PackageTags>
+		<PackageTags>DotLanguage Network graph  interactive interactive-extension dotLang</PackageTags>
 		<PackageId>DotLanguage.InteractiveExtension</PackageId>
 		<IncludeBuildOutput>true</IncludeBuildOutput>
 		<Nullable>enable</Nullable>
