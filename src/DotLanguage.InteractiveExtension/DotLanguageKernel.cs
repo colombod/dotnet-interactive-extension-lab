@@ -19,7 +19,7 @@ public class DotLanguageKernel : Kernel,
 
     public DotLanguageKernel() : base("dot")
     {
-        KernelInfo.LanguageName = "dotLang";
+        KernelInfo.LanguageName = "dotlang";
         KernelInfo.DisplayName = "dotLang";
         _cacheBuster = Guid.NewGuid().ToString("N");
     }
