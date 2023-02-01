@@ -22,13 +22,11 @@ public class NteractKernelExtensionTests : IDisposable
     }
 
     [Fact]
-    public async Task it_configures_preferred_mimeTypes()
+    public void it_configures_preferred_mimeTypes()
     {
         using var kernel = new CompositeKernel();
 
-        var kernelExtension = new KernelExtension();
-
-        await kernelExtension.OnLoadAsync(kernel);
+        KernelExtension.Load(kernel);
 
         var mimetypes = Formatter.GetPreferredMimeTypesFor(typeof(NteractDataExplorer));
 
@@ -38,13 +36,11 @@ public class NteractKernelExtensionTests : IDisposable
 
 
     [Fact]
-    public async Task it_registers_html_formatter()
+    public void it_registers_html_formatter()
     {
         using var kernel = new CompositeKernel();
 
-        var kernelExtension = new KernelExtension();
-
-        await kernelExtension.OnLoadAsync(kernel);
+        KernelExtension.Load(kernel);
 
         var data = new[]
         {
@@ -53,19 +49,17 @@ public class NteractKernelExtensionTests : IDisposable
             new {Type="grape" , Price=1.4}
         };
 
-
         var formattedValue = data.ExploreWithNteract().ToDisplayString(HtmlFormatter.MimeType);
         formattedValue.Should().Contain("(['nteractUri'], (nteract) => {");
+
     }
 
     [Fact]
-    public async Task it_registers_TabularDataResourceFormatter()
+    public void it_registers_TabularDataResourceFormatter()
     {
         using var kernel = new CompositeKernel();
 
-        var kernelExtension = new KernelExtension();
-
-        await kernelExtension.OnLoadAsync(kernel);
+        KernelExtension.Load(kernel);
 
         var data = new[]
         {
@@ -80,13 +74,11 @@ public class NteractKernelExtensionTests : IDisposable
     }
 
     [Fact]
-    public async Task it_is_formatted_as_multiple_mimeTypes()
+    public void it_is_formatted_as_multiple_mimeTypes()
     {
         using var kernel = new CompositeKernel();
 
-        var kernelExtension = new KernelExtension();
-
-        await kernelExtension.OnLoadAsync(kernel);
+        KernelExtension.Load(kernel);
 
         var data = new[]
         {
@@ -102,13 +94,11 @@ public class NteractKernelExtensionTests : IDisposable
     }
 
     [Fact]
-    public async Task widget_code_generation_is_not_broken()
+    public void widget_code_generation_is_not_broken()
     {
         using var kernel = new CompositeKernel();
 
-        var kernelExtension = new KernelExtension();
-
-        await kernelExtension.OnLoadAsync(kernel);
+        KernelExtension.Load(kernel);
 
         var data = new[]
         {
@@ -124,13 +114,11 @@ public class NteractKernelExtensionTests : IDisposable
     }
 
     [Fact]
-    public async Task it_can_load_script_from_the_extension()
+    public void it_can_load_script_from_the_extension()
     {
         using var kernel = new CompositeKernel();
 
-        var kernelExtension = new KernelExtension();
-
-        await kernelExtension.OnLoadAsync(kernel);
+        KernelExtension.Load(kernel);
 
         kernel.UseNteractDataExplorer();
 
@@ -147,12 +135,12 @@ public class NteractKernelExtensionTests : IDisposable
     }
 
     [Fact]
-    public async Task it_checks_and_load_require()
+    public void it_checks_and_load_require()
     {
         using var kernel = new CompositeKernel();
 
-        var kernelExtension = new KernelExtension();
-        await kernelExtension.OnLoadAsync(kernel);
+        KernelExtension.Load(kernel);
+
         var data = new[]
         {
             new {Type="orange", Price=1.2},
@@ -172,12 +160,11 @@ public class NteractKernelExtensionTests : IDisposable
     }
 
     [Fact]
-    public async Task it_can_loads_script_from_uri()
+    public void it_can_loads_script_from_uri()
     {
         using var kernel = new CompositeKernel();
 
-        var kernelExtension = new KernelExtension();
-        await kernelExtension.OnLoadAsync(kernel);
+        KernelExtension.Load(kernel);
 
         var data = new[]
         {
@@ -194,12 +181,12 @@ public class NteractKernelExtensionTests : IDisposable
     }
 
     [Fact]
-    public async Task it_can_loads_script_from_uri_and_specify_context()
+    public void it_can_loads_script_from_uri_and_specify_context()
     {
         using var kernel = new CompositeKernel();
 
-        var kernelExtension = new KernelExtension();
-        await kernelExtension.OnLoadAsync(kernel);
+        KernelExtension.Load(kernel);
+
         var data = new[]
         {
             new {Type="orange", Price=1.2},
@@ -216,12 +203,12 @@ public class NteractKernelExtensionTests : IDisposable
     }
 
     [Fact]
-    public async Task uri_is_quoted()
+    public void uri_is_quoted()
     {
         using var kernel = new CompositeKernel();
 
-        var kernelExtension = new KernelExtension();
-        await kernelExtension.OnLoadAsync(kernel);
+        KernelExtension.Load(kernel);
+
         kernel.UseNteractDataExplorer(new Uri("https://a.cdn.url/script.js"));
 
         var data = new[]
@@ -239,12 +226,11 @@ public class NteractKernelExtensionTests : IDisposable
     }
 
     [Fact]
-    public async Task uri_extension_is_removed()
+    public void uri_extension_is_removed()
     {
         using var kernel = new CompositeKernel();
 
-        var kernelExtension = new KernelExtension();
-        await kernelExtension.OnLoadAsync(kernel);
+        KernelExtension.Load(kernel);
 
         var data = new[]
         {
@@ -265,12 +251,11 @@ public class NteractKernelExtensionTests : IDisposable
     }
 
     [Fact]
-    public async Task can_specify_cacheBuster()
+    public void can_specify_cacheBuster()
     {
         using var kernel = new CompositeKernel();
 
-        var kernelExtension = new KernelExtension();
-        await kernelExtension.OnLoadAsync(kernel);
+        KernelExtension.Load(kernel);
 
         var data = new[]
         {

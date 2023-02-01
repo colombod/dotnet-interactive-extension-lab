@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nteract.InteractiveExtensio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nteract.InteractiveExtension.Tests", "src\nteract.InteractiveExtension.Tests\nteract.InteractiveExtension.Tests.csproj", "{A1092584-B367-4033-9ADE-3B35C840892D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SandDance.InteractiveExtensionTests", "src\SandDance.InteractiveExtension.Tests\SandDance.InteractiveExtensionTests.csproj", "{DD5A66A4-14AC-450E-8CAE-7C4AE731E89E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SandDance.InteractiveExtension.Tests", "src\SandDance.InteractiveExtension.Tests\SandDance.InteractiveExtension.Tests.csproj", "{DD5A66A4-14AC-450E-8CAE-7C4AE731E89E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataView.InteractiveExtension", "src\DataView.InteractiveExtension\DataView.InteractiveExtension.csproj", "{A3D66CA8-6591-4AE4-908D-6EF22E70283D}"
 EndProject

@@ -5,10 +5,9 @@ using Microsoft.DotNet.Interactive.Commands;
 
 namespace DataView.InteractiveExtension;
 
-public class KernelExtension : IKernelExtension
+public static class KernelExtension 
 {
-    /// <inheritdoc/>
-    public Task OnLoadAsync(Kernel kernel)
+    public static Task LoadAsync(Kernel kernel)
     {
 
         return kernel.SendAsync(

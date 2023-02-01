@@ -14,12 +14,12 @@ renderNteractDataExplorer_00000000000000000000000000000000 = () => {
     "primaryKey": [],
     "fields": [
       {
-        "name": "Type",
-        "type": "string"
+        "type": "string",
+        "name": "Type"
       },
       {
-        "name": "Price",
-        "type": "number"
+        "type": "number",
+        "name": "Price"
       }
     ]
   },
