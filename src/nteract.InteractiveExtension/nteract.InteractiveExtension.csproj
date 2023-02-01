@@ -18,21 +18,9 @@
 		<LangVersion>latest</LangVersion>
 	</PropertyGroup>
 
-	<PropertyGroup>
-		<nteractJsApiRoot>$(MSBuildThisFileDirectory)/../nteract.InteractiveExtension.js/</nteractJsApiRoot>
-	</PropertyGroup>
-
 	<ItemGroup>
-
-		<nteractTypescriptOutputFiles Include="$(nteractJsApiRoot)dist/nteractapi.js" />
-
-		<EmbeddedResource Include="@(nteractTypescriptOutputFiles)" LogicalName="$(AssemblyName).resources.%(FileName)%(Extension)" />
+		<None Include="extension.dib" />
 	</ItemGroup>
-
-	<ItemGroup>
-		<None Include="$(OutputPath)/nteract.InteractiveExtension.dll" Pack="true" PackagePath="interactive-extensions/dotnet" />
-	</ItemGroup>
-
 	<ItemGroup>
 		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.23081.2" />
 		<PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.23081.2" />

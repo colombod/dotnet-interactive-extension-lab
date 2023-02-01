@@ -15,10 +15,9 @@ namespace ImageSharp.InteractiveExtension;
 /// <summary>
 /// A <see cref="IKernelExtension"/> implementation adding support for ImageSharp images.
 /// </summary>
-public class KernelExtension : IKernelExtension
+public class KernelExtension
 {
-    /// <inheritdoc/>
-    public Task OnLoadAsync(Kernel kernel)
+    public static Task LoadAsync(Kernel kernel)
     {
         RegisterFormatters();
 

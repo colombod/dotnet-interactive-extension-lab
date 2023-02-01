@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Html;
 using Microsoft.DotNet.Interactive;
 
 namespace nteract.InteractiveExtension;
 
-public class KernelExtension : IKernelExtension, IStaticContentSource
+public class KernelExtension
 {
-    public Task OnLoadAsync(Kernel kernel)
+    public static void Load(Kernel kernel)
     {
         kernel.UseNteractDataExplorer(libraryUri: new Uri(@"https://colombod.github.io/dotnet-interactive-cdn/extensionlab/1.0.252001/nteract/nteractapi.js", UriKind.Absolute), libraryVersion: "1.0.252001");
 
@@ -35,7 +34,6 @@ public class KernelExtension : IKernelExtension, IStaticContentSource
     <img src=""https://user-images.githubusercontent.com/547415/109559345-621e5880-7a8f-11eb-8b98-d4feeaac116f.png"" width=""75%"">
     </details>"),
             "text/html");
-        return Task.CompletedTask;
     }
 
     public string Name => "nteract";

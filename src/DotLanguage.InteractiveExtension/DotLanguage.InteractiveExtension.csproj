@@ -23,8 +23,7 @@
 		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.23081.2" />
 		<PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.23081.2" />
 	</ItemGroup>
-
 	<ItemGroup>
-		<None Include="$(OutputPath)/DotLanguage.InteractiveExtension.dll" Pack="true" PackagePath="interactive-extensions/dotnet" />
+		<None Include="extension.dib" />
 	</ItemGroup>
 </Project>

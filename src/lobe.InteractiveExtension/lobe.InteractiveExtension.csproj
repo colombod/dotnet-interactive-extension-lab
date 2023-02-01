@@ -26,6 +26,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="$(OutputPath)/lobe.InteractiveExtension.dll" Pack="true" PackagePath="interactive-extensions/dotnet" />
+		<None Include="extension.dib" Pack="true" PackagePath="interactive-extensions/dotnet" />
 	</ItemGroup>
 </Project>

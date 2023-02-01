@@ -8,9 +8,9 @@ using static Microsoft.DotNet.Interactive.Formatting.PocketViewTags;
 
 namespace OpenCvSharp4.InteractiveExtension;
 
-public class KernelExtension : IKernelExtension
+public class KernelExtension 
 {
-    public async Task OnLoadAsync(Kernel kernel)
+    public static async Task OnLoadAsync(Kernel kernel)
     {
         Formatter.Register<Mat>((openCvImage, writer) =>
         {

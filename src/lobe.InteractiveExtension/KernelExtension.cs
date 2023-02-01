@@ -1,4 +1,5 @@
-﻿using System;
+﻿// ReSharper disable once RedundantUsingDirective
+
 using System.Threading.Tasks;
 using Microsoft.DotNet.Interactive;
 using Microsoft.DotNet.Interactive.Commands;
@@ -7,10 +8,9 @@ using Microsoft.DotNet.Interactive.Formatting.Csv;
 
 namespace lobe.InteractiveExtension;
 
-public class KernelExtension : IKernelExtension
+public class KernelExtension 
 {
-    /// <inheritdoc/>
-    public Task OnLoadAsync(Kernel kernel)
+    public Task LoadAsync(Kernel kernel)
     {
         //Formatter.Register<Classification>((Classification classification, FormatContext context) =>
         //{

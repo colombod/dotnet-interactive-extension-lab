@@ -26,9 +26,7 @@ public class NteractKernelExtensionTests : IDisposable
     {
         using var kernel = new CompositeKernel();
 
-        var kernelExtension = new KernelExtension();
-
-        await kernelExtension.OnLoadAsync(kernel);
+        KernelExtension.Load(kernel);
 
         var mimetypes = Formatter.GetPreferredMimeTypesFor(typeof(NteractDataExplorer));
 
@@ -42,9 +40,7 @@ public class NteractKernelExtensionTests : IDisposable
     {
         using var kernel = new CompositeKernel();
 
-        var kernelExtension = new KernelExtension();
-
-        await kernelExtension.OnLoadAsync(kernel);
+        KernelExtension.Load(kernel);
 
         var data = new[]
         {
@@ -63,9 +59,7 @@ public class NteractKernelExtensionTests : IDisposable
     {
         using var kernel = new CompositeKernel();
 
-        var kernelExtension = new KernelExtension();
-
-        await kernelExtension.OnLoadAsync(kernel);
+        KernelExtension.Load(kernel);
 
         var data = new[]
         {
@@ -84,9 +78,7 @@ public class NteractKernelExtensionTests : IDisposable
     {
         using var kernel = new CompositeKernel();
 
-        var kernelExtension = new KernelExtension();
-
-        await kernelExtension.OnLoadAsync(kernel);
+        KernelExtension.Load(kernel);
 
         var data = new[]
         {
@@ -106,9 +98,7 @@ public class NteractKernelExtensionTests : IDisposable
     {
         using var kernel = new CompositeKernel();
 
-        var kernelExtension = new KernelExtension();
-
-        await kernelExtension.OnLoadAsync(kernel);
+        KernelExtension.Load(kernel);
 
         var data = new[]
         {
@@ -128,9 +118,7 @@ public class NteractKernelExtensionTests : IDisposable
     {
         using var kernel = new CompositeKernel();
 
-        var kernelExtension = new KernelExtension();
-
-        await kernelExtension.OnLoadAsync(kernel);
+        KernelExtension.Load(kernel);
 
         kernel.UseNteractDataExplorer();
 
@@ -151,8 +139,8 @@ public class NteractKernelExtensionTests : IDisposable
     {
         using var kernel = new CompositeKernel();
 
-        var kernelExtension = new KernelExtension();
-        await kernelExtension.OnLoadAsync(kernel);
+        KernelExtension.Load(kernel);
+
         var data = new[]
         {
             new {Type="orange", Price=1.2},
@@ -176,8 +164,7 @@ public class NteractKernelExtensionTests : IDisposable
     {
         using var kernel = new CompositeKernel();
 
-        var kernelExtension = new KernelExtension();
-        await kernelExtension.OnLoadAsync(kernel);
+        KernelExtension.Load(kernel);
 
         var data = new[]
         {
@@ -198,8 +185,8 @@ public class NteractKernelExtensionTests : IDisposable
     {
         using var kernel = new CompositeKernel();
 
-        var kernelExtension = new KernelExtension();
-        await kernelExtension.OnLoadAsync(kernel);
+        KernelExtension.Load(kernel);
+
         var data = new[]
         {
             new {Type="orange", Price=1.2},
@@ -216,12 +203,12 @@ public class NteractKernelExtensionTests : IDisposable
     }
 
     [Fact]
-    public async Task uri_is_quoted()
+    public void uri_is_quoted()
     {
         using var kernel = new CompositeKernel();
 
-        var kernelExtension = new KernelExtension();
-        await kernelExtension.OnLoadAsync(kernel);
+        KernelExtension.Load(kernel);
+
         kernel.UseNteractDataExplorer(new Uri("https://a.cdn.url/script.js"));
 
         var data = new[]
@@ -239,12 +226,11 @@ public class NteractKernelExtensionTests : IDisposable
     }
 
     [Fact]
-    public async Task uri_extension_is_removed()
+    public void uri_extension_is_removed()
     {
         using var kernel = new CompositeKernel();
 
-        var kernelExtension = new KernelExtension();
-        await kernelExtension.OnLoadAsync(kernel);
+        KernelExtension.Load(kernel);
 
         var data = new[]
         {
@@ -265,12 +251,11 @@ public class NteractKernelExtensionTests : IDisposable
     }
 
     [Fact]
-    public async Task can_specify_cacheBuster()
+    public void can_specify_cacheBuster()
     {
         using var kernel = new CompositeKernel();
 
-        var kernelExtension = new KernelExtension();
-        await kernelExtension.OnLoadAsync(kernel);
+        KernelExtension.Load(kernel);
 
         var data = new[]
         {

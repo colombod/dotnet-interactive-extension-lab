@@ -26,7 +26,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="$(OutputPath)/Data.Analysis.InteractiveExtension.dll" Pack="true" PackagePath="interactive-extensions/dotnet" />
+		<None Include="extension.dib" Pack="true" PackagePath="interactive-extensions/dotnet" />
 	</ItemGroup>
 
 </Project>

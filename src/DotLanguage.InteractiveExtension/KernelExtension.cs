@@ -1,12 +1,11 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Html;
+﻿using Microsoft.AspNetCore.Html;
 using Microsoft.DotNet.Interactive;
 
 namespace DotLanguage.InteractiveExtension;
 
-public class KernelExtension : IKernelExtension
+public class KernelExtension 
 {
-    public Task OnLoadAsync(Kernel kernel)
+    public static void Load(Kernel kernel)
     {
         if (kernel is CompositeKernel cs)
         {
@@ -55,6 +54,5 @@ graph G {
         </details>"),
                 "text/html");
         }
-        return Task.CompletedTask;
     }
 }

@@ -18,17 +18,6 @@
 	  <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
-	<PropertyGroup>
-		<sanddanceJsApiRoot>$(MSBuildThisFileDirectory)/../SandDance.InteractiveExtension.js/</sanddanceJsApiRoot>
-	</PropertyGroup>
-
-	<ItemGroup>
-
-		<SandDanceTypescriptOutputFiles Include="$(sanddanceJsApiRoot)dist/sanddanceapi.js" />
-
-		<EmbeddedResource Include="@(SandDanceTypescriptOutputFiles)" LogicalName="$(AssemblyName).resources.%(FileName)%(Extension)" />
-	</ItemGroup>
-
 	<!-- sanddance resources -->
 
 	<ItemGroup>
@@ -37,7 +26,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="$(OutputPath)/SandDance.InteractiveExtension.dll" Pack="true" PackagePath="interactive-extensions/dotnet" />
+		<None Include="extension.dib" Pack="true" PackagePath="interactive-extensions/dotnet" />
 	</ItemGroup>
 
 </Project>

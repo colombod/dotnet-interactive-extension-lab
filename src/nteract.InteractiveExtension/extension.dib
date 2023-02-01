@@ -1,0 +1,3 @@
+#!csharp
+
+await lobe.InteractiveExtension.KernelExtension.LoadAsync(Microsoft.DotNet.Interactive.KernelInvocationContext.Current.HandlingKernel.RootKernel);

@@ -1,15 +1,13 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Html;
+﻿using Microsoft.AspNetCore.Html;
 using Microsoft.DotNet.Interactive;
 using Uri = System.Uri;
 using UriKind = System.UriKind;
 
 namespace SandDance.InteractiveExtension;
 
-public class KernelExtension : IKernelExtension, IStaticContentSource
+public class KernelExtension
 {
-    public string Name => "SandDance";
-    public Task OnLoadAsync(Kernel kernel)
+    public static void Load(Kernel kernel)
     {
         kernel.UseSandDanceExplorer(libraryUri: new Uri(@"https://colombod.github.io/dotnet-interactive-cdn/extensionlab/1.0.59/SandDance/sanddanceapi.js", UriKind.Absolute), libraryVersion: "1.0.252001");
 
@@ -36,7 +34,5 @@ public class KernelExtension : IKernelExtension, IStaticContentSource
     <img src=""https://user-images.githubusercontent.com/11507384/54236654-52d42800-44d1-11e9-859e-6c5d297a46d2.gif"" width=""30%"">
     </details>"),
             "text/html");
-
-        return Task.CompletedTask;
     }
 }
