@@ -10,7 +10,7 @@ namespace OpenCvSharp4.InteractiveExtension;
 
 public class KernelExtension 
 {
-    public static async Task OnLoadAsync(Kernel kernel)
+    public static async Task LoadAsync(Kernel kernel)
     {
         Formatter.Register<Mat>((openCvImage, writer) =>
         {

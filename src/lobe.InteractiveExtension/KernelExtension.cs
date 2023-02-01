@@ -10,7 +10,7 @@ namespace lobe.InteractiveExtension;
 
 public class KernelExtension 
 {
-    public Task LoadAsync(Kernel kernel)
+    public static Task LoadAsync(Kernel kernel)
     {
         //Formatter.Register<Classification>((Classification classification, FormatContext context) =>
         //{
