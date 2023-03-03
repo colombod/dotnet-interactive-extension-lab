@@ -47,9 +47,9 @@ build_script:
   - cmd: dotnet build dotnetInteractiveExtensions.sln -c Release
 after_build:
   # For once the build has completed
-  - cmd: dotnet pack dotnetInteractiveExtensions.sln -o packages -c Release
+  - cmd: dotnet pack dotnetInteractiveExtensions.sln -c Release
 artifacts:
-  - path: "packages/**/*.nupkg"
+  - path: "src/**/*.nupkg"
     name: NugetPacakges
 
 clone_depth: 1
