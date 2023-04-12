@@ -6,6 +6,8 @@ using Microsoft.DotNet.Interactive.Formatting;
 using TestUtilities;
 using Xunit;
 using DuckDB.NET.Data;
+using Microsoft.DotNet.Interactive.Commands;
+using Microsoft.DotNet.Interactive.Formatting.TabularData;
 
 namespace DuckDB.InteractiveExtension.Tests;
 
@@ -45,6 +47,39 @@ SELECT SUM(deliciousness) FROM fruit GROUP BY color
             .FormattedValues
             .Should()
             .ContainSingle(f => f.MimeType == HtmlFormatter.MimeType);
+    }
+
+    [Fact]
+    public async Task It_can_store_result_set_with_a_name()
+    {
+        using var kernel = new CompositeKernel
+        {
+            new CSharpKernel().UseNugetDirective(),
+            new KeyValueStoreKernel()
+        };
+
+        kernel.AddKernelConnector(new ConnectDuckDBCommand());
+
+        using var _ = CreateInMemoryDuckDB(out var connectionString);
+
+        var result = await kernel.SubmitCodeAsync(
+            $"#!connect duckdb --kernel-name mydb  \"{connectionString}\"");
+
+        result.Events
+            .Should()
+            .NotContainErrors();
+
+        result = await kernel.SubmitCodeAsync(@"
+#!mydb --name my_data_result
+SELECT SUM(deliciousness) FROM fruit GROUP BY color
+");
+
+        var duckDbKernel = kernel.FindKernelByName("mydb");
+
+        result = await duckDbKernel.SendAsync(new RequestValue("my_data_result"));
+
+        result.Events.Should().ContainSingle<ValueProduced>()
+            .Which.Value.Should().BeAssignableTo<IEnumerable<TabularDataResource>>();
     }
 
     internal static IDisposable CreateInMemoryDuckDB(out string connectionString)
