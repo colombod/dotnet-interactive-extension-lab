@@ -12,7 +12,6 @@ namespace DuckDB.InteractiveExtension.Tests;
 public class DuckDBConnectionTests
 {
 
-
     [Fact]
     public async Task It_can_connect_and_query_data()
     {
@@ -35,17 +34,17 @@ public class DuckDBConnectionTests
 
         result = await kernel.SubmitCodeAsync(@"
 #!mydb
-SELECT * FROM fruit
+SELECT SUM(deliciousness) FROM fruit GROUP BY color
 ");
 
         result.Events.Should().NotContainErrors();
 
         result.Events.Should()
-              .ContainSingle<DisplayedValueProduced>()
-              .Which
-              .FormattedValues
-              .Should()
-              .ContainSingle(f => f.MimeType == HtmlFormatter.MimeType);
+            .ContainSingle<DisplayedValueProduced>()
+            .Which
+            .FormattedValues
+            .Should()
+            .ContainSingle(f => f.MimeType == HtmlFormatter.MimeType);
     }
 
     internal static IDisposable CreateInMemorySQLiteDb(out string connectionString)
@@ -72,7 +71,7 @@ CREATE TABLE fruit (
 
         var updateCommand = connection.CreateCommand();
         updateCommand.CommandText =
-            @"INSERT INTO fruit VALUES ('apple', 'green', 10), ('banana', 'red', 11), ('banana', 'red', 11)";
+            @"INSERT INTO fruit VALUES ('apple', 'green', 10), ('banana', 'yellow', 11), ('banana', 'green', 11)";
         updateCommand.ExecuteNonQuery();
 
 
