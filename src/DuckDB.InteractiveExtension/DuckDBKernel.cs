@@ -15,7 +15,7 @@ public class DuckDBKernel : Kernel,
     IKernelCommandHandler<SubmitCode>
 
 {
-    private IEnumerable<IEnumerable<IEnumerable<(string name, object value)>>> _tables;
+    private IEnumerable<IEnumerable<IEnumerable<(string name, object value)>>>? _tables;
     private readonly DuckDBConnection connection;
 
 
