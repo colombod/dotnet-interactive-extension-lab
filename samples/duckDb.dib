@@ -14,7 +14,7 @@
 
 ## Create the table
 
-#!csharp
+#!duckDb
 
 CREATE TABLE fruit (
     name TEXT,
@@ -22,10 +22,10 @@ CREATE TABLE fruit (
     deliciousness INTEGER
 );
 
-#!csharp
+#!duckDb
 
 INSERT INTO fruit VALUES ('apple', 'green', 10), ('banana', 'yellow', 11), ('banana', 'green', 11)
 
-#!csharp
+#!duckDb
 
 SELECT SUM(deliciousness) FROM fruit GROUP BY color
