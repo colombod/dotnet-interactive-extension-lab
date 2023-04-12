@@ -1,4 +1,3 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
@@ -15,21 +14,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SandDance.InteractiveExtens
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestUtilities", "src\TestUtilities\TestUtilities.csproj", "{E8D06DD3-47C6-4D5F-AFB8-CF9AD2804D25}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nteract.InteractiveExtension", "src\nteract.InteractiveExtension\nteract.InteractiveExtension.csproj", "{68C2EC35-D961-49C4-9D49-9D71D9A2FAF5}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nteract.InteractiveExtension.Tests", "src\nteract.InteractiveExtension.Tests\nteract.InteractiveExtension.Tests.csproj", "{A1092584-B367-4033-9ADE-3B35C840892D}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SandDance.InteractiveExtension.Tests", "src\SandDance.InteractiveExtension.Tests\SandDance.InteractiveExtension.Tests.csproj", "{DD5A66A4-14AC-450E-8CAE-7C4AE731E89E}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataView.InteractiveExtension", "src\DataView.InteractiveExtension\DataView.InteractiveExtension.csproj", "{A3D66CA8-6591-4AE4-908D-6EF22E70283D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "lobe.InteractiveExtension", "src\lobe.InteractiveExtension\lobe.InteractiveExtension.csproj", "{B8EFD805-7997-4243-9D8C-505ABD67EE31}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.Analysis.InteractiveExtension", "src\Data.Analysis.InteractiveExtension\Data.Analysis.InteractiveExtension.csproj", "{4CEF8D0B-D884-4DEA-A7FF-DE86F2F9F939}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuckDB.InteractiveExtension", "src\DuckDB.InteractiveExtension\DuckDB.InteractiveExtension.csproj", "{D6175D0B-0081-4B6A-AFBD-A1D1F69487C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DuckDB.InteractiveExtension", "src\DuckDB.InteractiveExtension\DuckDB.InteractiveExtension.csproj", "{D6175D0B-0081-4B6A-AFBD-A1D1F69487C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuckDB.InteractiveExtension.Tests", "src\DuckDB.InteractiveExtension.Tests\DuckDB.InteractiveExtension.Tests.csproj", "{871EB7AE-24D9-41A4-A2FF-3895B9FC17F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DuckDB.InteractiveExtension.Tests", "src\DuckDB.InteractiveExtension.Tests\DuckDB.InteractiveExtension.Tests.csproj", "{871EB7AE-24D9-41A4-A2FF-3895B9FC17F1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SandDance.InteractiveExtension.Tests", "src\SandDance.InteractiveExtension.Tests\SandDance.InteractiveExtension.Tests.csproj", "{EEE21697-836A-4FC4-AB25-80D6E6DB40E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,18 +52,6 @@ Global
 		{E8D06DD3-47C6-4D5F-AFB8-CF9AD2804D25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8D06DD3-47C6-4D5F-AFB8-CF9AD2804D25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8D06DD3-47C6-4D5F-AFB8-CF9AD2804D25}.Release|Any CPU.Build.0 = Release|Any CPU
-		{68C2EC35-D961-49C4-9D49-9D71D9A2FAF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{68C2EC35-D961-49C4-9D49-9D71D9A2FAF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{68C2EC35-D961-49C4-9D49-9D71D9A2FAF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{68C2EC35-D961-49C4-9D49-9D71D9A2FAF5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A1092584-B367-4033-9ADE-3B35C840892D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A1092584-B367-4033-9ADE-3B35C840892D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A1092584-B367-4033-9ADE-3B35C840892D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A1092584-B367-4033-9ADE-3B35C840892D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DD5A66A4-14AC-450E-8CAE-7C4AE731E89E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DD5A66A4-14AC-450E-8CAE-7C4AE731E89E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DD5A66A4-14AC-450E-8CAE-7C4AE731E89E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DD5A66A4-14AC-450E-8CAE-7C4AE731E89E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A3D66CA8-6591-4AE4-908D-6EF22E70283D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A3D66CA8-6591-4AE4-908D-6EF22E70283D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3D66CA8-6591-4AE4-908D-6EF22E70283D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -89,15 +72,18 @@ Global
 		{871EB7AE-24D9-41A4-A2FF-3895B9FC17F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{871EB7AE-24D9-41A4-A2FF-3895B9FC17F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{871EB7AE-24D9-41A4-A2FF-3895B9FC17F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEE21697-836A-4FC4-AB25-80D6E6DB40E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEE21697-836A-4FC4-AB25-80D6E6DB40E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEE21697-836A-4FC4-AB25-80D6E6DB40E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEE21697-836A-4FC4-AB25-80D6E6DB40E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E8D06DD3-47C6-4D5F-AFB8-CF9AD2804D25} = {20C4282E-81DE-47F2-838A-C820F746C04A}
-		{A1092584-B367-4033-9ADE-3B35C840892D} = {20C4282E-81DE-47F2-838A-C820F746C04A}
-		{DD5A66A4-14AC-450E-8CAE-7C4AE731E89E} = {20C4282E-81DE-47F2-838A-C820F746C04A}
 		{871EB7AE-24D9-41A4-A2FF-3895B9FC17F1} = {20C4282E-81DE-47F2-838A-C820F746C04A}
+		{EEE21697-836A-4FC4-AB25-80D6E6DB40E3} = {20C4282E-81DE-47F2-838A-C820F746C04A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7726ACD0-497E-4FB1-83D4-92EE7A3D7A9E}
