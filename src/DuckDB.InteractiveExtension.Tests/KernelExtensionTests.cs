@@ -23,7 +23,7 @@ public class DuckDBConnectionTests
 
         kernel.AddKernelConnector(new ConnectDuckDBCommand());
 
-        using var _ = CreateInMemorySQLiteDb(out var connectionString);
+        using var _ = CreateInMemoryDuckDB(out var connectionString);
 
         var result = await kernel.SubmitCodeAsync(
             $"#!connect duckdb --kernel-name mydb  \"{connectionString}\"");
