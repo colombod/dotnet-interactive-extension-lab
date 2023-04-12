@@ -47,7 +47,7 @@ SELECT SUM(deliciousness) FROM fruit GROUP BY color
             .ContainSingle(f => f.MimeType == HtmlFormatter.MimeType);
     }
 
-    internal static IDisposable CreateInMemorySQLiteDb(out string connectionString)
+    internal static IDisposable CreateInMemoryDuckDB(out string connectionString)
     {
         var dbFileName = Path.GetTempFileName();
         connectionString = $"Data Source={dbFileName}.db";
