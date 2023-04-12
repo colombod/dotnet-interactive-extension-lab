@@ -1,0 +1,31 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"aliases":["c#","cs"],"languageName":"C#","name":"csharp"},{"aliases":[],"languageName":"dotlang","name":"dot"},{"aliases":["f#","fs"],"languageName":"F#","name":"fsharp"},{"aliases":[],"languageName":"HTML","name":"html"},{"aliases":[],"languageName":"http","name":"httpRequest"},{"aliases":["js"],"languageName":"JavaScript","name":"javascript"},{"aliases":[],"languageName":"KQL","name":"kql"},{"aliases":[],"languageName":"Mermaid","name":"mermaid"},{"aliases":["powershell"],"languageName":"PowerShell","name":"pwsh"},{"aliases":[],"languageName":"SQL","name":"sql"},{"aliases":[],"name":"value"},{"aliases":["frontend"],"name":"vscode"}]}}
+
+#!csharp
+
+#r "nuget: DuckDB.InteractiveExtension, *-*"
+
+#!csharp
+
+#!connect duckdb  --kernel-name duckDb "DataSource=:memory:"
+
+#!markdown
+
+## Create the table
+
+#!csharp
+
+CREATE TABLE fruit (
+    name TEXT,
+    color TEXT,
+    deliciousness INTEGER
+);
+
+#!csharp
+
+INSERT INTO fruit VALUES ('apple', 'green', 10), ('banana', 'yellow', 11), ('banana', 'green', 11)
+
+#!csharp
+
+SELECT SUM(deliciousness) FROM fruit GROUP BY color
