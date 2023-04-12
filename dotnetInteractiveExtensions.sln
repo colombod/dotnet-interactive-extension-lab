@@ -27,6 +27,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "lobe.InteractiveExtension",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.Analysis.InteractiveExtension", "src\Data.Analysis.InteractiveExtension\Data.Analysis.InteractiveExtension.csproj", "{4CEF8D0B-D884-4DEA-A7FF-DE86F2F9F939}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuckDB.InteractiveExtension", "src\DuckDB.InteractiveExtension\DuckDB.InteractiveExtension.csproj", "{D6175D0B-0081-4B6A-AFBD-A1D1F69487C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuckDB.InteractiveExtension.Tests", "src\DuckDB.InteractiveExtension.Tests\DuckDB.InteractiveExtension.Tests.csproj", "{871EB7AE-24D9-41A4-A2FF-3895B9FC17F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +81,14 @@ Global
 		{4CEF8D0B-D884-4DEA-A7FF-DE86F2F9F939}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CEF8D0B-D884-4DEA-A7FF-DE86F2F9F939}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CEF8D0B-D884-4DEA-A7FF-DE86F2F9F939}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6175D0B-0081-4B6A-AFBD-A1D1F69487C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6175D0B-0081-4B6A-AFBD-A1D1F69487C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6175D0B-0081-4B6A-AFBD-A1D1F69487C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6175D0B-0081-4B6A-AFBD-A1D1F69487C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{871EB7AE-24D9-41A4-A2FF-3895B9FC17F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{871EB7AE-24D9-41A4-A2FF-3895B9FC17F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{871EB7AE-24D9-41A4-A2FF-3895B9FC17F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{871EB7AE-24D9-41A4-A2FF-3895B9FC17F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,6 +97,7 @@ Global
 		{E8D06DD3-47C6-4D5F-AFB8-CF9AD2804D25} = {20C4282E-81DE-47F2-838A-C820F746C04A}
 		{A1092584-B367-4033-9ADE-3B35C840892D} = {20C4282E-81DE-47F2-838A-C820F746C04A}
 		{DD5A66A4-14AC-450E-8CAE-7C4AE731E89E} = {20C4282E-81DE-47F2-838A-C820F746C04A}
+		{871EB7AE-24D9-41A4-A2FF-3895B9FC17F1} = {20C4282E-81DE-47F2-838A-C820F746C04A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7726ACD0-497E-4FB1-83D4-92EE7A3D7A9E}

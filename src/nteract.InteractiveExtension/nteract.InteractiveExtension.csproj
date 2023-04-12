@@ -7,11 +7,11 @@
 		<PackageProjectUrl>https://github.com/colombod/dotnet-interactive-extension-lab</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/colombod/dotnet-interactive-extension-lab</RepositoryUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<Description>Visualize data using nteract data explorer in .NET Interactive notebooks</Description>
+		<Description>Visualize data using nteract data explorer in Polyglot Notebooks</Description>
 		<Copyright>2021, 2022</Copyright>
 		<Version>0.0.1</Version>
 		<Authors>Diego Colombo</Authors>
-		<PackageTags>nteract viusalization data  interactive interactive-extension</PackageTags>
+		<PackageTags>nteract viusalization data  interactive interactive-extension polyglot notebooks</PackageTags>
 		<PackageId>nteract.InteractiveExtension</PackageId>
 		<IncludeBuildOutput>true</IncludeBuildOutput>
 		<Nullable>enable</Nullable>

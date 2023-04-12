@@ -1,18 +1,18 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	  <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
 	  <PackageVersion>0.0.1</PackageVersion>
 	  <IsPackable>true</IsPackable>
 	  <PackageProjectUrl>https://github.com/colombod/dotnet-interactive-extension-lab</PackageProjectUrl>
 	  <RepositoryUrl>https://github.com/colombod/dotnet-interactive-extension-lab</RepositoryUrl>
 	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
-	  <Description>Explore data using SandDance explorer in polyglot Notebooks</Description>
+	  <Description>DuckDB support for Polyglot Notebooks</Description>
 	  <Copyright>2021, 2022</Copyright>
 	  <Version>0.0.1</Version>
 	  <Authors>Diego Colombo</Authors>
-	  <PackageTags>sanddance viusalization data  interactive interactive-extension polyglot notebooks</PackageTags>
-	  <PackageId>SandDance.InteractiveExtension</PackageId>
+	  <PackageTags>OLAP DuckDB data  interactive interactive-extension polyglot notebooks</PackageTags>
+	  <PackageId>DuckDB.InteractiveExtension</PackageId>
 	  <IncludeBuildOutput>true</IncludeBuildOutput>
 	  <Nullable>enable</Nullable>
 	  <LangVersion>latest</LangVersion>
@@ -21,12 +21,12 @@
 	<!-- sanddance resources -->
 
 	<ItemGroup>
+		<PackageReference Include="DuckDB.NET.Data.Full" Version="0.7.1" />
 		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.23205.1" />
 		<PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.23205.1" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="extension.dib" Pack="true" PackagePath="interactive-extensions/dotnet" />
+		<None Include="extension.dib" />
 	</ItemGroup>
-
 </Project>
