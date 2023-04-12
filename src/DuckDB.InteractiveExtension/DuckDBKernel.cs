@@ -27,7 +27,7 @@ public class DuckDBKernel : Kernel,
     private readonly DuckDBConnection _connection;
     private ChooseDuckDBKernelDirective _chooseKernelDirective;
 
-    public override ChooseKernelDirective ChooseKernelDirective => (_chooseKernelDirective ??= new(this));
+    public override ChooseDuckDBKernelDirective ChooseKernelDirective => (_chooseKernelDirective ??= new(this));
 
     public DuckDBKernel(string name, string connectionString) : base(name)
     {
