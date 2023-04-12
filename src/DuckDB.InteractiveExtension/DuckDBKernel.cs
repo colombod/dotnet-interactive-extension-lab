@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+
+using System;
+using System.Collections.Generic;
+using System.CommandLine.Parsing;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,36 +9,45 @@ using DuckDB.NET.Data;
 
 using Microsoft.DotNet.Interactive;
 using Microsoft.DotNet.Interactive.Commands;
+using Microsoft.DotNet.Interactive.Events;
 using Microsoft.DotNet.Interactive.Formatting.TabularData;
+using Microsoft.DotNet.Interactive.ValueSharing;
 
 namespace DuckDB.InteractiveExtension;
 
 public class DuckDBKernel : Kernel, 
-    IKernelCommandHandler<SubmitCode>
+    IKernelCommandHandler<SubmitCode>,
+    IKernelCommandHandler<RequestValueInfos>,
+    IKernelCommandHandler<RequestValue>
 
 {
     private IEnumerable<IEnumerable<IEnumerable<(string name, object value)>>>? _tables;
-    private readonly DuckDBConnection connection;
+    private readonly Dictionary<string, IReadOnlyCollection<TabularDataResource>> _queryResults  = new();
+    private readonly Dictionary<string, object> _variables = new(StringComparer.Ordinal);
+    private readonly DuckDBConnection _connection;
+    private ChooseDuckDBKernelDirective _chooseKernelDirective;
 
+    public override ChooseKernelDirective ChooseKernelDirective => (_chooseKernelDirective ??= new(this));
 
     public DuckDBKernel(string name, string connectionString) : base(name)
     {
         KernelInfo.LanguageName = "SQL";
-        connection = new DuckDBConnection(connectionString);
-        RegisterForDisposal(connection);
+        _connection = new DuckDBConnection(connectionString);
+        RegisterForDisposal(_connection);
     }
 
     public async Task HandleAsync(SubmitCode submitCode, KernelInvocationContext context)
     {
-        if (connection.State != ConnectionState.Open)
+        if (_connection.State != ConnectionState.Open)
         {
-            await connection.OpenAsync();
+            await _connection.OpenAsync();
         }
-        await using var dbCommand = connection.CreateCommand();
+        await using var dbCommand = _connection.CreateCommand();
 
         dbCommand.CommandText = submitCode.Code;
 
         _tables = Execute(dbCommand);
+        var results = new List<TabularDataResource>();
 
         foreach (var table in _tables)
         {
@@ -43,6 +55,20 @@ public class DuckDBKernel : Kernel,
 
             var explorer = DataExplorer.CreateDefault(tabularDataResource);
             context.Display(explorer);
+            results.Add(tabularDataResource);
+           
+        }
+
+        StoreQueryResults(results, submitCode.KernelChooserParseResult);
+    }
+
+    private void StoreQueryResults(IReadOnlyCollection<TabularDataResource> results, ParseResult commandKernelChooserParseResult)
+    {
+        var chooser = _chooseKernelDirective;
+        var name = commandKernelChooserParseResult?.GetValueForOption(chooser.NameOption);
+        if (!string.IsNullOrWhiteSpace(name))
+        {
+            _queryResults[name] = results;
         }
     }
 
@@ -92,5 +118,49 @@ public class DuckDBKernel : Kernel,
                 nameCounts[columnName] = 1;
             }
         }
+    }
+
+    public bool TryGetValue<T>(string name, out T value)
+    {
+        if (_queryResults.TryGetValue(name, out var resultSet) &&
+            resultSet is T resultSetT)
+        {
+            value = resultSetT;
+            return true;
+        }
+        value = default;
+        return false;
+    }
+
+    public Task HandleAsync(RequestValue command, KernelInvocationContext context)
+    {
+        if (TryGetValue<object>(command.Name, out var value))
+        {
+            context.PublishValueProduced(command, value);
+        }
+        else
+        {
+            context.Fail(command, message: $"Value '{command.Name}' not found in kernel {Name}");
+        }
+
+        return Task.CompletedTask;
+    }
+
+    public Task HandleAsync(RequestValueInfos command, KernelInvocationContext context)
+    {
+        var valueInfos = _queryResults.Keys.Select(key =>
+        {
+            var formattedValues = FormattedValue.FromObject(
+                _variables[key],
+                command.MimeType);
+
+            return new KernelValueInfo(
+                key, formattedValues[0],
+                type: typeof(IEnumerable<TabularDataResource>));
+        }).ToArray();
+
+        context.Publish(new ValueInfosProduced(valueInfos, command));
+
+        return Task.CompletedTask;
     }
 }
