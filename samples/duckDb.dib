@@ -1,6 +1,6 @@
 #!meta
 
-{"kernelInfo":{"defaultKernelName":"csharp","items":[{"aliases":["c#","cs"],"languageName":"C#","name":"csharp"},{"aliases":[],"languageName":"dotlang","name":"dot"},{"aliases":["f#","fs"],"languageName":"F#","name":"fsharp"},{"aliases":[],"languageName":"HTML","name":"html"},{"aliases":[],"languageName":"http","name":"httpRequest"},{"aliases":["js"],"languageName":"JavaScript","name":"javascript"},{"aliases":[],"languageName":"KQL","name":"kql"},{"aliases":[],"languageName":"Mermaid","name":"mermaid"},{"aliases":["powershell"],"languageName":"PowerShell","name":"pwsh"},{"aliases":[],"languageName":"SQL","name":"sql"},{"aliases":[],"name":"value"},{"aliases":["frontend"],"name":"vscode"}]}}
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"aliases":["c#","cs"],"languageName":"C#","name":"csharp"},{"aliases":[],"languageName":"dotlang","name":"dot"},{"aliases":[],"languageName":"SQL","name":"duckDb"},{"aliases":["f#","fs"],"languageName":"F#","name":"fsharp"},{"aliases":[],"languageName":"HTML","name":"html"},{"aliases":[],"languageName":"http","name":"httpRequest"},{"aliases":["js"],"languageName":"JavaScript","name":"javascript"},{"aliases":[],"languageName":"KQL","name":"kql"},{"aliases":[],"languageName":"Mermaid","name":"mermaid"},{"aliases":["powershell"],"languageName":"PowerShell","name":"pwsh"},{"aliases":[],"languageName":"SQL","name":"sql"},{"aliases":[],"name":"value"},{"aliases":["frontend"],"name":"vscode"}]}}
 
 #!csharp
 
@@ -9,10 +9,6 @@
 #!csharp
 
 #!connect duckdb  --kernel-name duckDb "DataSource=:memory:"
-
-#!markdown
-
-## Create the table
 
 #!duckDb
 
@@ -29,3 +25,21 @@ INSERT INTO fruit VALUES ('apple', 'green', 10), ('banana', 'yellow', 11), ('ban
 #!duckDb
 
 SELECT SUM(deliciousness) FROM fruit GROUP BY color
+
+#!duckDb
+
+INSTALL 'httpfs'
+
+#!duckDb
+
+LOAD 'httpfs'
+
+#!duckDb
+
+select genus, species, count(*) as n
+from read_parquet(
+"s3://gbif-open-data-us-east-1/occurrence/2023-03-01/occurrence.parquet/000000"
+)
+group by genus, species
+order by n desc
+limit 10
