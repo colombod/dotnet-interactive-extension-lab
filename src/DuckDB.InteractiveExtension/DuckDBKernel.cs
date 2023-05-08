@@ -150,7 +150,7 @@ public class DuckDBKernel : Kernel,
     {
         var valueInfos = _queryResults.Keys.Select(key =>
         {
-            var formattedValues = FormattedValue.FromObject(
+            var formattedValues = FormattedValue.CreateManyFromObject(
                 _variables[key],
                 command.MimeType);
 

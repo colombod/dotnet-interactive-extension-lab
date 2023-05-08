@@ -86,7 +86,7 @@ public class SandDanceKernelExtensionTests : IDisposable
             new {Type="grape" , Price=1.4}
         };
 
-        var formattedValues = FormattedValue.FromObject(data.ExploreWithSandDance());
+        var formattedValues = FormattedValue.CreateManyFromObject(data.ExploreWithSandDance());
         formattedValues.Select(fv => fv.MimeType)
             .Should()
             .BeEquivalentTo(HtmlFormatter.MimeType, CsvFormatter.MimeType);
