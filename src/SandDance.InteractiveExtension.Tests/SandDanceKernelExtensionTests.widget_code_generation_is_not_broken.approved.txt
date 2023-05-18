@@ -5,7 +5,7 @@
 
 renderSandDanceExplorer_00000000000000000000000000000000 = () => {
 
-    (require.config({ 'paths': { 'context': '1.0.252001', 'sandDanceUri' : 'https://colombod.github.io/dotnet-interactive-cdn/extensionlab/1.0.59/SandDance/sanddanceapi', 'urlArgs': 'cacheBuster=00000000000000000000000000000000' }}) || require)(['sandDanceUri'], (sandDance) => {
+    (require.config({ 'paths': { 'context': '1.0.100', 'sandDanceUri' : 'https://colombod.github.io/dotnet-interactive-cdn/extensionlab/1.0.100/SandDance/sanddanceapi', 'urlArgs': 'cacheBuster=00000000000000000000000000000000' }}) || require)(['sandDanceUri'], (sandDance) => {
 
         sandDance.createSandDanceExplorer({
             data: {
