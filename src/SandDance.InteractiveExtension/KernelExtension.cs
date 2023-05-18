@@ -9,7 +9,7 @@ public class KernelExtension
 {
     public static void Load(Kernel kernel)
     {
-        kernel.UseSandDanceExplorer(libraryUri: new Uri(@"https://colombod.github.io/dotnet-interactive-cdn/extensionlab/1.0.59/SandDance/sanddanceapi.js", UriKind.Absolute), libraryVersion: "1.0.252001");
+        kernel.UseSandDanceExplorer(libraryUri: new Uri(@"https://colombod.github.io/dotnet-interactive-cdn/extensionlab/1.0.100/SandDance/sanddanceapi.js", UriKind.Absolute), libraryVersion: "1.0.100");
 
         KernelInvocationContext.Current?.Display(
             new HtmlString($@"<details><summary>Explore data visually using the <a href=""https://github.com/microsoft/SandDance"">SandDance Explorer</a>.</summary>
