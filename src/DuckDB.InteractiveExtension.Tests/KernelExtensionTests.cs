@@ -50,6 +50,38 @@ SELECT SUM(deliciousness) FROM fruit GROUP BY color
     }
 
     [Fact]
+    public async Task It_can_handle_multiple_statements()
+    {
+        using var kernel = new CompositeKernel
+        {
+            new CSharpKernel().UseNugetDirective(),
+            new KeyValueStoreKernel()
+        };
+
+        kernel.AddKernelConnector(new ConnectDuckDBCommand());
+
+        using var _ = CreateInMemoryDuckDB(out var connectionString);
+
+        var result = await kernel.SubmitCodeAsync(
+            $"#!connect duckdb --kernel-name mydb  \"{connectionString}\"");
+
+        result.Events
+            .Should()
+            .NotContainErrors();
+
+        result = await kernel.SubmitCodeAsync(@"
+#!mydb
+SELECT SUM(deliciousness) FROM fruit GROUP BY color;
+
+SELECT SUM(deliciousness) FROM fruit GROUP BY name;
+");
+
+        result.Events.Should().NotContainErrors();
+
+        result.Events.OfType<DisplayedValueProduced>().Should().HaveCount(2);
+    }
+
+    [Fact]
     public async Task It_can_store_result_set_with_a_name()
     {
         using var kernel = new CompositeKernel
