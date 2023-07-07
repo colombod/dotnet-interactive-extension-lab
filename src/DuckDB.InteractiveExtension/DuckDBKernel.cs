@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using System.CommandLine.Parsing;
@@ -29,10 +28,14 @@ public class DuckDBKernel : Kernel,
 
     public override ChooseDuckDBKernelDirective ChooseKernelDirective => (_chooseKernelDirective ??= new(this));
 
-    public DuckDBKernel(string name, string connectionString) : base(name)
+    public DuckDBKernel(string name, string connectionString) : this(name, new DuckDBConnection(connectionString))
+    {
+    }
+
+    public DuckDBKernel(string name, DuckDBConnection connection) : base(name)
     {
         KernelInfo.LanguageName = "SQL";
-        _connection = new DuckDBConnection(connectionString);
+        _connection = connection;
         RegisterForDisposal(_connection);
     }
 
