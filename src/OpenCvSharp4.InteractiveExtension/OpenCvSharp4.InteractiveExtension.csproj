@@ -17,6 +17,8 @@
 		<IncludeBuildOutput>true</IncludeBuildOutput>
 		<Nullable>enable</Nullable>
 		<LangVersion>latest</LangVersion>
+		<SignAssembly>True</SignAssembly>
+		<AssemblyOriginatorKeyFile>..\..\keyPair.snk</AssemblyOriginatorKeyFile>
 	</PropertyGroup>
 
 	<ItemGroup>
