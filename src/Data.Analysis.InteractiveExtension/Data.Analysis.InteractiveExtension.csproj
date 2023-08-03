@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
@@ -23,8 +23,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Data.Analysis" Version="0.20.1" />
-		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.23313.2" />
-		<PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.23313.2" />
+		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.23403.1" />
+		<PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.23403.1" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -1,11 +1,9 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.DotNet.Interactive;
-using Microsoft.DotNet.Interactive.Connection;
 
 namespace DuckDB.InteractiveExtension;
 
-public class DuckDBKernelConnector : IKernelConnector
-{
+public class DuckDBKernelConnector {
     public DuckDBKernelConnector(string connectionString)
     {
         ConnectionString = connectionString;
