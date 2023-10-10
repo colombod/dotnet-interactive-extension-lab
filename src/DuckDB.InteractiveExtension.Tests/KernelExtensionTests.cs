@@ -19,7 +19,7 @@ public class DuckDBConnectionTests
     {
         using var kernel = new CompositeKernel
         {
-            new CSharpKernel().UseNugetDirective(),
+            new CSharpKernel(),
             new KeyValueStoreKernel()
         };
 
@@ -54,7 +54,7 @@ SELECT SUM(deliciousness) FROM fruit GROUP BY color
     {
         using var kernel = new CompositeKernel
         {
-            new CSharpKernel().UseNugetDirective(),
+            new CSharpKernel(),
             new KeyValueStoreKernel()
         };
 
@@ -86,7 +86,7 @@ SELECT SUM(deliciousness) FROM fruit GROUP BY name;
     {
         using var kernel = new CompositeKernel
         {
-            new CSharpKernel().UseNugetDirective(),
+            new CSharpKernel(),
             new KeyValueStoreKernel()
         };
 
