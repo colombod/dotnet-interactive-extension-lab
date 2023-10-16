@@ -50,6 +50,41 @@ SELECT SUM(deliciousness) FROM fruit GROUP BY color
     }
 
     [Fact]
+    public async Task It_can_connect_and_query_data_with_list_type()
+    {
+        using var kernel = new CompositeKernel
+        {
+            new CSharpKernel(),
+            new KeyValueStoreKernel()
+        };
+
+        kernel.AddKernelConnector(new ConnectDuckDBCommand());
+
+        using var _ = CreateInMemoryDuckDB(out var connectionString);
+
+        var result = await kernel.SubmitCodeAsync(
+            $"#!connect duckdb --kernel-name mydb  \"{connectionString}\"");
+
+        result.Events
+            .Should()
+            .NotContainErrors();
+
+        result = await kernel.SubmitCodeAsync(@"
+#!mydb
+SELECT numbers FROM fruit 
+");
+
+        result.Events.Should().NotContainErrors();
+
+        result.Events.Should()
+            .ContainSingle<DisplayedValueProduced>()
+            .Which
+            .FormattedValues
+            .Should()
+            .ContainSingle(f => f.MimeType == HtmlFormatter.MimeType);
+    }
+
+    [Fact]
     public async Task It_can_handle_multiple_statements()
     {
         using var kernel = new CompositeKernel
@@ -127,7 +162,8 @@ SELECT SUM(deliciousness) FROM fruit GROUP BY color
 CREATE TABLE fruit (
     name TEXT,
     color TEXT,
-    deliciousness INTEGER
+    deliciousness INTEGER,
+    numbers FLOAT[]
 );
             ";
         createCommand.ExecuteNonQuery();
@@ -138,7 +174,7 @@ CREATE TABLE fruit (
 
         var updateCommand = connection.CreateCommand();
         updateCommand.CommandText =
-            @"INSERT INTO fruit VALUES ('apple', 'green', 10), ('banana', 'yellow', 11), ('banana', 'green', 11)";
+            @"INSERT INTO fruit VALUES ('apple', 'green', 10, [1,2.3]), ('banana', 'yellow', 11, [1,2.3]), ('banana', 'green', 11, [1,2.3])";
         updateCommand.ExecuteNonQuery();
 
 
