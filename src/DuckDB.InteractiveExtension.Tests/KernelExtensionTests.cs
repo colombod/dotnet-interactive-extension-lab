@@ -71,17 +71,21 @@ SELECT SUM(deliciousness) FROM fruit GROUP BY color
 
         result = await kernel.SubmitCodeAsync(@"
 #!mydb
-SELECT numbers FROM fruit 
+SELECT * FROM fruit 
 ");
 
         result.Events.Should().NotContainErrors();
 
-        result.Events.Should()
+        var displayValueProduced = result.Events.Should()
             .ContainSingle<DisplayedValueProduced>()
-            .Which
-            .FormattedValues
+            .Which;
+
+        displayValueProduced.FormattedValues
             .Should()
             .ContainSingle(f => f.MimeType == HtmlFormatter.MimeType);
+        var res = displayValueProduced.Value as DataExplorer<TabularDataResource>;
+
+        res.Data.Data.First().Last().Value.Should().BeEquivalentTo(new[] { "a", "b", "c" });
     }
 
     [Fact]
@@ -163,7 +167,8 @@ CREATE TABLE fruit (
     name TEXT,
     color TEXT,
     deliciousness INTEGER,
-    numbers FLOAT[]
+    numbers FLOAT[],
+    labels TEXT[]
 );
             ";
         createCommand.ExecuteNonQuery();
@@ -174,7 +179,7 @@ CREATE TABLE fruit (
 
         var updateCommand = connection.CreateCommand();
         updateCommand.CommandText =
-            @"INSERT INTO fruit VALUES ('apple', 'green', 10, [1,2.3]), ('banana', 'yellow', 11, [1,2.3]), ('banana', 'green', 11, [1,2.3])";
+            @"INSERT INTO fruit VALUES ('apple', 'green', 10, [1,2.3],['a', 'b', 'c']), ('banana', 'yellow', 11, [1,2.3], ['a', 'b', 'c']), ('banana', 'green', 11, [1,2.3],['a', 'b', 'c'])";
         updateCommand.ExecuteNonQuery();
 
 
