@@ -50,6 +50,62 @@ SELECT SUM(deliciousness) FROM fruit GROUP BY color
     }
 
     [Fact]
+    public async Task It_can_create_collections()
+    {
+        using var kernel = new CompositeKernel
+        {
+            new CSharpKernel(),
+            new KeyValueStoreKernel()
+        };
+
+        kernel.AddKernelConnector(new ConnectDuckDBCommand());
+
+        using var _ = CreateInMemoryDuckDB(out var connectionString);
+
+        var result = await kernel.SubmitCodeAsync(
+            $"#!connect duckdb --kernel-name mydb  \"{connectionString}\"");
+
+        result.Events
+            .Should()
+            .NotContainErrors();
+
+        result = await kernel.SubmitCodeAsync(@"
+#!mydb
+CREATE TABLE defaultVectorCollection(
+ id TEXT,
+payload TEXT,
+embedding FLOAT[],
+tags TEXT[],
+timestamp TEXT,
+PRIMARY KEY(id));
+");
+        result.Events.Should().NotContainErrors();
+
+        result = await kernel.SubmitCodeAsync(@"
+#!mydb
+SHOW ALL TABLES;
+");
+
+        result.Events.Should().NotContainErrors();
+
+        var displayValueProduced = result.Events.Should()
+            .ContainSingle<DisplayedValueProduced>()
+            .Which;
+
+        displayValueProduced.FormattedValues
+            .Should()
+            .ContainSingle(f => f.MimeType == HtmlFormatter.MimeType);
+        var res = displayValueProduced.Value as DataExplorer<TabularDataResource>;
+
+        var row = res.Data.Data.First(e => e.Any(e => e.Key == "name" && ((string)e.Value) == "defaultVectorCollection"));
+
+        var types = row.First(e => e.Key == "column_types").Value as List<string>;
+
+        types.Should().BeEquivalentTo(new[] { "VARCHAR", "VARCHAR", "FLOAT[]", "VARCHAR[]", "VARCHAR" });
+
+    }
+
+    [Fact]
     public async Task It_can_connect_and_query_data_with_list_type()
     {
         using var kernel = new CompositeKernel
@@ -68,6 +124,12 @@ SELECT SUM(deliciousness) FROM fruit GROUP BY color
         result.Events
             .Should()
             .NotContainErrors();
+
+        result = await kernel.SubmitCodeAsync(@"
+#!mydb
+SHOW ALL TABLES;
+");
+        result.Events.Should().NotContainErrors();
 
         result = await kernel.SubmitCodeAsync(@"
 #!mydb
