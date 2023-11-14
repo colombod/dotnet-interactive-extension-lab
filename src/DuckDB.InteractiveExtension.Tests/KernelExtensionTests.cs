@@ -217,7 +217,7 @@ SELECT SUM(deliciousness) FROM fruit GROUP BY color
 
     internal static IDisposable CreateInMemoryDuckDB(out string connectionString)
     {
-        var dbFileName = Path.GetTempFileName();
+        var dbFileName = $"{Path.GetTempFileName()}_{Guid.NewGuid():N}";
         connectionString = $"Data Source={dbFileName}.db";
         //connectionString = "Data Source=:memory:";
         var topLevelConnection = new DuckDBConnection(connectionString);
@@ -234,12 +234,12 @@ CREATE TABLE fruit (
     labels TEXT[]
 );
             ";
-        createCommand.ExecuteNonQuery();
+        var res = createCommand.ExecuteNonQuery();
 
         var updateCommand = topLevelConnection.CreateCommand();
         updateCommand.CommandText =
-            @"INSERT INTO fruit VALUES ('apple', 'green', 10, [1,2.3],['a', 'b', 'c']), ('banana', 'yellow', 11, [1,2.3], ['a', 'b', 'c']), ('banana', 'green', 11, [1,2.3],['a', 'b', 'c'])";
-        updateCommand.ExecuteNonQuery();
+            "INSERT INTO fruit VALUES ('apple', 'green', 10, [1,2.3],['a', 'b', 'c']), ('banana', 'yellow', 11, [1,2.3], ['a', 'b', 'c']), ('banana', 'green', 11, [1,2.3],['a', 'b', 'c'])";
+        updateCommand.ExecuteReader();
 
         return topLevelConnection;
     }
