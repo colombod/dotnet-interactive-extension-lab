@@ -219,7 +219,7 @@ SELECT SUM(deliciousness) FROM fruit GROUP BY color
     {
         var dbFileName = Path.GetTempFileName();
         connectionString = $"Data Source={dbFileName}.db";
-        //connectionString = $"Data Source=:memory:";
+        //connectionString = "Data Source=:memory:";
         var topLevelConnection = new DuckDBConnection(connectionString);
         topLevelConnection.Open();
         
