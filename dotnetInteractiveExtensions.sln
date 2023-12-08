@@ -26,6 +26,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DuckDB.InteractiveExtension
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SandDance.InteractiveExtension.Tests", "src\SandDance.InteractiveExtension.Tests\SandDance.InteractiveExtension.Tests.csproj", "{EEE21697-836A-4FC4-AB25-80D6E6DB40E3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Analysis.InteractiveExtension.Tests", "src\Data.Analysis.InteractiveExtension.Tests\Data.Analysis.InteractiveExtension.Tests.csproj", "{049378CC-F499-4CD5-B9E4-537B11830605}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -76,6 +78,10 @@ Global
 		{EEE21697-836A-4FC4-AB25-80D6E6DB40E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEE21697-836A-4FC4-AB25-80D6E6DB40E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEE21697-836A-4FC4-AB25-80D6E6DB40E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{049378CC-F499-4CD5-B9E4-537B11830605}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{049378CC-F499-4CD5-B9E4-537B11830605}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{049378CC-F499-4CD5-B9E4-537B11830605}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{049378CC-F499-4CD5-B9E4-537B11830605}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -84,6 +90,7 @@ Global
 		{E8D06DD3-47C6-4D5F-AFB8-CF9AD2804D25} = {20C4282E-81DE-47F2-838A-C820F746C04A}
 		{871EB7AE-24D9-41A4-A2FF-3895B9FC17F1} = {20C4282E-81DE-47F2-838A-C820F746C04A}
 		{EEE21697-836A-4FC4-AB25-80D6E6DB40E3} = {20C4282E-81DE-47F2-838A-C820F746C04A}
+		{049378CC-F499-4CD5-B9E4-537B11830605} = {20C4282E-81DE-47F2-838A-C820F746C04A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7726ACD0-497E-4FB1-83D4-92EE7A3D7A9E}

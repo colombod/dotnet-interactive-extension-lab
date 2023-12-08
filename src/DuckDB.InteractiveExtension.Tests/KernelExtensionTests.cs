@@ -11,7 +11,7 @@ using Microsoft.DotNet.Interactive.Formatting.TabularData;
 
 namespace DuckDB.InteractiveExtension.Tests;
 
-public class DuckDBConnectionTests
+public class DuckDbConnectionTests
 {
 
     [Fact]
