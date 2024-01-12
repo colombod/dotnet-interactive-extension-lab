@@ -23,8 +23,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Data.Analysis" Version="0.21.0" />
-		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.24061.2" />
-		<PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.24061.2" />
+		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.24061.5" />
+		<PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.24061.5" />
 	</ItemGroup>
 
 	<ItemGroup>
