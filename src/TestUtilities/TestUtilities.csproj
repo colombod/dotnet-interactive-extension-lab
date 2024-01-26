@@ -10,7 +10,7 @@
 	<ItemGroup>
 		<PackageReference Include="FluentAssertions" Version="6.9.0" />
 		<PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
-		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.24061.5" />
+		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.24075.1" />
 	</ItemGroup>
 
 </Project>
