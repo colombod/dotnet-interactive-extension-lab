@@ -23,8 +23,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="lobe" Version="1.0.35" />
-		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.24129.1" />
-		<PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.24129.1" />
+		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.24164.1" />
+		<PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.24164.1" />
 	</ItemGroup>
 
 	<ItemGroup>

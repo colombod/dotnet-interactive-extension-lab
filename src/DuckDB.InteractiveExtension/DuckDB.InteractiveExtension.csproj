@@ -23,10 +23,10 @@
 	<!-- sanddance resources -->
 
 	<ItemGroup>
-		<PackageReference Include="DuckDB.NET.Data.Full" Version="0.9.2" />
-		<PackageReference Include="DuckDB.NET.Data" Version="0.9.2" />
-		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.24129.1" />
-		<PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.24129.1" />
+		<PackageReference Include="DuckDB.NET.Data.Full" Version="0.10.1" />
+		<PackageReference Include="DuckDB.NET.Data" Version="0.10.1" />
+		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.24164.1" />
+		<PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.24164.1" />
 	</ItemGroup>
 
 	<ItemGroup>
