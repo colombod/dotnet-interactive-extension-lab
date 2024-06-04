@@ -25,8 +25,8 @@
 	<ItemGroup>
 		<PackageReference Include="DuckDB.NET.Data.Full" Version="1.0.0" />
 		<PackageReference Include="DuckDB.NET.Data" Version="1.0.0" />
-		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.24164.1" />
-		<PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.24164.1" />
+		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.24229.4" />
+		<PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.24229.4" />
 	</ItemGroup>
 
 	<ItemGroup>
