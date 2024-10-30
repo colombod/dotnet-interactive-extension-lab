@@ -10,7 +10,7 @@ public class KernelExtension
         if (kernel is CompositeKernel compositeKernel)
         {
             compositeKernel
-                .AddKernelConnector(new ConnectDuckDBCommand());
+                .AddConnectDirective(new ConnectDuckDBDirective());
 
             KernelInvocationContext.Current?.Display(
                 new HtmlString(@"<details><summary>Query DuckDB databases.</summary>
