@@ -164,7 +164,7 @@ SELECT * FROM fruit
         using var _ = CreateInMemoryDuckDB(out var connectionString);
 
         var result = await kernel.SubmitCodeAsync(
-            $"#!connect duckdb --kernel-name mydb  \"{connectionString}\"");
+            $"#!connect duckdb --kernel-name mydb --connection-string \"{connectionString}\"");
 
         result.Events
             .Should()

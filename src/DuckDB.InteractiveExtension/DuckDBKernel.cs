@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.CommandLine;
-using System.CommandLine.Parsing;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,6 +7,7 @@ using DuckDB.NET.Data;
 
 using Microsoft.DotNet.Interactive;
 using Microsoft.DotNet.Interactive.Commands;
+using Microsoft.DotNet.Interactive.Directives;
 using Microsoft.DotNet.Interactive.Events;
 using Microsoft.DotNet.Interactive.Formatting.TabularData;
 using Microsoft.DotNet.Interactive.ValueSharing;
@@ -33,9 +32,21 @@ public class DuckDBKernel : Kernel,
 
     public DuckDBKernel(string name, DuckDBConnection connection) : base(name)
     {
-        KernelInfo.LanguageName = "SQL";
+        KernelInfo.LanguageName = "KQL";
         _connection = connection;
         RegisterForDisposal(_connection);
+    }
+
+    public override KernelSpecifierDirective KernelSpecifierDirective
+    {
+        get
+        {
+            var directive = base.KernelSpecifierDirective;
+
+            directive.Parameters.Add(new("--name"));
+
+            return directive;
+        }
     }
 
     public async Task HandleAsync(SubmitCode submitCode, KernelInvocationContext context)

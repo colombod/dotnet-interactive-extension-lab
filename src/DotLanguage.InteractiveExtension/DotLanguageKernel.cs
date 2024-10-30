@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Html;
 using Microsoft.DotNet.Interactive;
 using Microsoft.DotNet.Interactive.Commands;
+using Microsoft.DotNet.Interactive.Directives;
 using Microsoft.DotNet.Interactive.Http;
 
 namespace DotLanguage.InteractiveExtension;
@@ -15,7 +16,6 @@ public class DotLanguageKernel : Kernel,
 {
     private readonly string _cacheBuster;
 
-    private ChooseDotLanguageKernelDirective? _chooseKernelDirective;
 
     public DotLanguageKernel() : base("dot")
     {
@@ -24,17 +24,42 @@ public class DotLanguageKernel : Kernel,
         _cacheBuster = Guid.NewGuid().ToString("N");
     }
 
+    public override KernelSpecifierDirective KernelSpecifierDirective
+    {
+        get
+        {
+            var directive = base.KernelSpecifierDirective;
+
+            directive.Parameters.Add(new("--width"));
+            directive.Parameters.Add(new("--height"));
+            var layoutEngineParameter = new KernelDirectiveParameter("--layout-engine");
+            layoutEngineParameter.AddCompletions(() => Enum.GetNames(typeof(LayoutEngine)));
+            directive.Parameters.Add(layoutEngineParameter);
+
+            return directive;
+        }
+    }
+
     public Task HandleAsync(SubmitCode command, KernelInvocationContext context)
     {
-        var width = "100%";
-        var height = "600px";
         var layoutEngine = LayoutEngine.dot;
-        if (_chooseKernelDirective is { } chooser)
+        command.Parameters.TryGetValue("--width", out var width);
+        if (string.IsNullOrWhiteSpace(width))
         {
-            width = command.KernelChooserParseResult?.GetValueForOption(chooser.WidthOption);
-            height = command.KernelChooserParseResult?.GetValueForOption(chooser.HeightOption);
-            layoutEngine = command.KernelChooserParseResult?.GetValueForOption(chooser.LayoutEngineOption) ?? LayoutEngine.dot;
+            width = "100%";
         }
+        command.Parameters.TryGetValue("--height", out var height);
+        if (string.IsNullOrWhiteSpace(height))
+        {
+            height = "600px";
+        }
+        command.Parameters.TryGetValue("--layout-engine", out var layoutEngineString);
+        if (string.IsNullOrWhiteSpace(layoutEngineString))
+        {
+            layoutEngineString = "dot";
+        }
+        layoutEngine = Enum.Parse<LayoutEngine>(layoutEngineString, true);
+
 
         var code = GenerateHtml(command.Code, new Uri("https://cdn.jsdelivr.net/npm/@hpcc-js/wasm@1.16.1/dist/index.min.js", UriKind.Absolute), new Uri("https://cdn.jsdelivr.net/npm/@hpcc-js/wasm@1.16.1/dist", UriKind.Absolute), "1.16.1", _cacheBuster, width, height, layoutEngine);
         context.Display(code);
@@ -42,7 +67,6 @@ public class DotLanguageKernel : Kernel,
 
     }
 
-    public override ChooseKernelDirective ChooseKernelDirective => _chooseKernelDirective ??= new ChooseDotLanguageKernelDirective(this);
 
     private IHtmlContent GenerateHtml(string commandCode, Uri libraryUri, Uri wasmFolder, string? libraryVersion,
         string cacheBuster, string? width, string? height, LayoutEngine layoutEngine)
