@@ -23,7 +23,7 @@ public class DuckDbConnectionTests
             new KeyValueStoreKernel()
         };
 
-        kernel.AddKernelConnector(new ConnectDuckDBCommand());
+        kernel.AddConnectDirective(new ConnectDuckDBDirective());
 
         using var _ = CreateInMemoryDuckDB(out var connectionString);
 
@@ -58,7 +58,7 @@ SELECT SUM(deliciousness) FROM fruit GROUP BY color
             new KeyValueStoreKernel()
         };
 
-        kernel.AddKernelConnector(new ConnectDuckDBCommand());
+        kernel.AddConnectDirective(new ConnectDuckDBDirective());
 
         using var _ = CreateInMemoryDuckDB(out var connectionString);
 
@@ -114,7 +114,7 @@ SHOW ALL TABLES;
             new KeyValueStoreKernel()
         };
 
-        kernel.AddKernelConnector(new ConnectDuckDBCommand());
+        kernel.AddConnectDirective(new ConnectDuckDBDirective());
 
         using var _ = CreateInMemoryDuckDB(out var connectionString);
 
@@ -159,7 +159,7 @@ SELECT * FROM fruit
             new KeyValueStoreKernel()
         };
 
-        kernel.AddKernelConnector(new ConnectDuckDBCommand());
+        kernel.AddConnectDirective(new ConnectDuckDBDirective());
 
         using var _ = CreateInMemoryDuckDB(out var connectionString);
 
@@ -191,12 +191,12 @@ SELECT SUM(deliciousness) FROM fruit GROUP BY name;
             new KeyValueStoreKernel()
         };
 
-        kernel.AddKernelConnector(new ConnectDuckDBCommand());
+        kernel.AddConnectDirective(new ConnectDuckDBDirective());
 
         using var _ = CreateInMemoryDuckDB(out var connectionString);
 
         var result = await kernel.SubmitCodeAsync(
-            $"#!connect duckdb --kernel-name mydb  \"{connectionString}\"");
+            $"#!connect duckdb --kernel-name mydb --connection-string \"{connectionString}\"");
 
         result.Events
             .Should()

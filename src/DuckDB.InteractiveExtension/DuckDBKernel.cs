@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.CommandLine;
 using System.CommandLine.Parsing;
 using System.Data;
 using System.Linq;
@@ -24,9 +25,7 @@ public class DuckDBKernel : Kernel,
     private readonly Dictionary<string, IReadOnlyCollection<TabularDataResource>> _queryResults  = new();
     private readonly Dictionary<string, object> _variables = new(StringComparer.Ordinal);
     private readonly DuckDBConnection _connection;
-    private ChooseDuckDBKernelDirective _chooseKernelDirective;
 
-    public override ChooseDuckDBKernelDirective ChooseKernelDirective => (_chooseKernelDirective ??= new(this));
 
     public DuckDBKernel(string name, string connectionString) : this(name, new DuckDBConnection(connectionString))
     {
@@ -62,16 +61,18 @@ public class DuckDBKernel : Kernel,
            
         }
 
-        StoreQueryResults(results, submitCode.KernelChooserParseResult);
+        if (submitCode.Parameters.TryGetValue("--name", out var queryName))
+        {
+            StoreQueryResults(results, queryName);
+        }
     }
 
-    private void StoreQueryResults(IReadOnlyCollection<TabularDataResource> results, ParseResult commandKernelChooserParseResult)
+    private void StoreQueryResults(IReadOnlyCollection<TabularDataResource> results, string? variableName)
     {
-        var chooser = _chooseKernelDirective;
-        var name = commandKernelChooserParseResult?.GetValueForOption(chooser.NameOption);
-        if (!string.IsNullOrWhiteSpace(name))
+    
+        if (!string.IsNullOrWhiteSpace(variableName))
         {
-            _queryResults[name] = results;
+            _queryResults[variableName] = results;
         }
     }
 
@@ -123,7 +124,7 @@ public class DuckDBKernel : Kernel,
         }
     }
 
-    public bool TryGetValue<T>(string name, out T value)
+    public bool TryGetValue<T>(string name, out T? value)
     {
         if (_queryResults.TryGetValue(name, out var resultSet) &&
             resultSet is T resultSetT)
