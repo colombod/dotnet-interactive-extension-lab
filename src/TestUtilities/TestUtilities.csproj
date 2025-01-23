@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	  <IsPackable>false</IsPackable>
@@ -9,8 +9,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="FluentAssertions" Version="6.9.0" />
-		<PackageReference Include="HtmlAgilityPack" Version="1.11.61" />
-		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.24530.1" />
+		<PackageReference Include="HtmlAgilityPack" Version="1.11.72" />
+		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.25070.1" />
 	</ItemGroup>
 
 </Project>

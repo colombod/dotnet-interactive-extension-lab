@@ -22,9 +22,9 @@
 
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.24530.1" />
-		<PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.24530.1" />
-		<PackageReference Include="Microsoft.ML.DataView" Version="3.0.0" />
+		<PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.25070.1" />
+		<PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.25070.1" />
+		<PackageReference Include="Microsoft.ML.DataView" Version="4.0.1" />
 	</ItemGroup>
 
 	<ItemGroup>

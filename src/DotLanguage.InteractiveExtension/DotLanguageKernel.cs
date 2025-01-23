@@ -42,7 +42,6 @@ public class DotLanguageKernel : Kernel,
 
     public Task HandleAsync(SubmitCode command, KernelInvocationContext context)
     {
-        var layoutEngine = LayoutEngine.dot;
         command.Parameters.TryGetValue("--width", out var width);
         if (string.IsNullOrWhiteSpace(width))
         {
@@ -58,7 +57,7 @@ public class DotLanguageKernel : Kernel,
         {
             layoutEngineString = "dot";
         }
-        layoutEngine = Enum.Parse<LayoutEngine>(layoutEngineString, true);
+        var layoutEngine = Enum.Parse<LayoutEngine>(layoutEngineString, true);
 
 
         var code = GenerateHtml(command.Code, new Uri("https://cdn.jsdelivr.net/npm/@hpcc-js/wasm@1.16.1/dist/index.min.js", UriKind.Absolute), new Uri("https://cdn.jsdelivr.net/npm/@hpcc-js/wasm@1.16.1/dist", UriKind.Absolute), "1.16.1", _cacheBuster, width, height, layoutEngine);
@@ -72,7 +71,7 @@ public class DotLanguageKernel : Kernel,
         string cacheBuster, string? width, string? height, LayoutEngine layoutEngine)
     {
         var requireUri = new Uri("https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js");
-        var divId = $"hppc_{Guid.NewGuid().ToString("N")}";
+        var divId = $"hppc_{Guid.NewGuid():N}";
         var code = new StringBuilder();
         var renderingFunctionName = $"loadHpcc_{divId}";
         code.AppendLine("<div>");
